@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "233817841525",
+    "project_id": "the-boos-163d6",
+    "storage_bucket": "the-boos-163d6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233817841525:android:970dca87cfd8d479b2fd3c",
+        "android_client_info": {
+          "package_name": "com.example.this_books"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZBlYlSFcvUbhrYKzprVF9A4GK2P0Apbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
