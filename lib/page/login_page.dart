@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:this_books/models/auth_model.dart';
 import 'package:this_books/page/Forget%20Password/forgetPass_Page.dart';
 import 'package:this_books/page/register_page.dart';
 import 'package:this_books/page/welcome_page.dart';
@@ -20,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscureText = true;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final AuthPage _authPage = AuthPage();
 
   void _togglePasswordVisibility() {
     setState(() {
@@ -28,27 +29,6 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  Future<void> _signIn() async {
-    try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
-      );
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const WelcomePage(),
-        ),
-      );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.red,
-          content: Text(AppLocalizations.of(context)!.mistakeLogin),
-        ),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +115,9 @@ class _LoginPageState extends State<LoginPage> {
                   width: double.infinity,
                   child: GestureDetector(
                     child: ElevatedButton(
-                      onPressed: _signIn,
+                      onPressed: (){
+                        _authPage.signIn(context, _emailController, _passwordController);
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff283E50),
                         shadowColor: Colors.black,

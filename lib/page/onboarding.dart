@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:this_books/page/login_page.dart';
 import 'package:this_books/shared/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -22,7 +23,27 @@ class _OnBoardingState extends State<OnBoarding> {
   void initState() {
     super.initState();
     pageController = PageController(initialPage: currentIndex);
-    controller = OnboardingData(context); // تهيئة المتغير هنا
+    controller = OnboardingData(context);
+    _checkOnboardingStatus();
+  }
+
+  Future<void> _checkOnboardingStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool? seenOnboarding = prefs.getBool('seenOnboarding');
+
+    if (seenOnboarding == true) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginPage(),
+        ),
+      );
+    }
+  }
+
+  Future<void> _setOnboardingSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('seenOnboarding', true);
   }
 
   @override
@@ -113,24 +134,25 @@ class _OnBoardingState extends State<OnBoarding> {
                 color: const Color(0xff283E50),
               ),
               child: TextButton(
-                onPressed: () {
-                  setState(() {
-                    if (controller.items.length - 1 > currentIndex) {
+                onPressed: () async {
+                  if (controller.items.length - 1 > currentIndex) {
+                    setState(() {
                       currentIndex++;
                       pageController.animateToPage(
                         currentIndex,
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.easeIn,
                       );
-                    } else {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
-                        ),
-                      );
-                    }
-                  });
+                    });
+                  } else {
+                    await _setOnboardingSeen();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                    );
+                  }
                 },
                 child: Text(
                   currentIndex == controller.items.length - 1

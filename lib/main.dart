@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale('ar'),
       title: 'Akmar',
-      home: RegisterPage(),
+      home: SplashScreen(),
     );
   }
 }
