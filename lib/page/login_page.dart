@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: GestureDetector(
                     child: ElevatedButton(
                       onPressed: (){
-                        _authPage.signIn(context, _emailController, _passwordController);
+                        _authPage.signIn( context,_emailController, _passwordController);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff283E50),

@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:this_books/models/auth_model.dart';
 import 'package:this_books/page/login_page.dart';
-import 'package:this_books/page/welcome_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import '../shared/constants.dart';
+import 'package:this_books/shared/constants.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -27,8 +24,6 @@ class _RegisterPageState extends State<RegisterPage> {
       _obscureText = !_obscureText;
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   keyboardType: TextInputType.text,
                   obscureText: false,
                   decoration: decorationTextFiled.copyWith(
-                    hintText: AppLocalizations.of(context)!.enterFirstName,
+                    hintText: AppLocalizations.of(context)!.enterName,
                     prefixIcon: const Icon(Icons.person_pin_rounded),
                   ),
                 ),
@@ -112,32 +107,33 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 33,
                 ),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: (){
-                      _authPage.register(context, _emailController, _passwordController, _usernameController);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff283E50),
-                      shadowColor: Colors.black,
-                      elevation: 15,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 40, vertical: 20),
-                    ),
-                    child: Text(
-                      AppLocalizations.of(context)!.next,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  _authPage.register(context, _emailController, _passwordController, _usernameController);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xff283E50),
+                  shadowColor: Colors.black,
+                  elevation: 15,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 40, vertical: 20,
                   ),
                 ),
+                child: Text(
+                  AppLocalizations.of(context)!.next,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
                 const SizedBox(
                   height: 33,
                 ),
