@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:this_books/page/login_page.dart';
 import 'package:this_books/page/reset_page.dart';
 import 'package:this_books/shared/constants.dart';
 import 'package:this_books/widget/navDrower_widget.dart';
@@ -136,7 +139,23 @@ class _SettingPageState extends State<SettingPage> {
                     textColor: Colors.red,
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.red,
-                    onTap: () {},
+                    onTap: () async {
+                      // تسجيل الخروج من FirebaseAuth
+                      await FirebaseAuth.instance.signOut();
+
+                      // إزالة بيانات تسجيل الدخول من SharedPreferences
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      await prefs.remove('email');
+                      await prefs.remove('password');
+
+                      // الانتقال إلى صفحة تسجيل الدخول
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
