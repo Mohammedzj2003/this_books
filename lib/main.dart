@@ -26,11 +26,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Locale _locale = const Locale('ar');
+  bool _isDarkMode = false;
 
   @override
   void initState() {
     super.initState();
     _loadLocale();
+    _loadTheme();
   }
 
   void setLocale(Locale locale) {
@@ -47,6 +49,22 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  Future<void> _loadTheme() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isDarkMode = prefs.getBool('isDarkMode') ?? false;
+    setState(() {
+      _isDarkMode = isDarkMode;
+    });
+  }
+
+  void _toggleTheme(bool isDark) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isDarkMode = isDark;
+    });
+    await prefs.setBool('isDarkMode', isDark);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,6 +73,7 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: _locale,
       title: 'Akmar',
+      theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
       home: FutureBuilder(
         future: _checkLoginStatus(),
         builder: (context, snapshot) {

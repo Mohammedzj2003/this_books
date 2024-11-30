@@ -5,10 +5,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:this_books/main.dart';
 import 'package:this_books/page/login_page.dart';
+import 'package:this_books/page/profile_page.dart';
 import 'package:this_books/page/reset_page.dart';
 import 'package:this_books/shared/constants.dart';
 import 'package:this_books/widget/navDrower_widget.dart';
-
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -18,16 +18,40 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  bool _isDarkMode = false;
+  double _fontSize = 18.0;
+
+  void initState() {
+    super.initState();
+    _loadTheme();
+  }
+
+  Future<void> _loadTheme() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isDarkMode = prefs.getBool('isDarkMode') ?? false;
+    setState(() {
+      _isDarkMode = isDarkMode;
+    });
+  }
+
+  void _toggleTheme(bool isDark) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isDarkMode = isDark;
+    });
+    await prefs.setBool('isDarkMode', isDark);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       drawer: const NavdrowerWidget(),
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context)!.setting,
           style: const TextStyle(color: Colors.white70),
         ),
-        backgroundColor:const Color(0xff283E50),
+        backgroundColor: const Color(0xff283E50),
         leading: Builder(
           builder: (context) => GestureDetector(
             onTap: () {
@@ -49,7 +73,7 @@ class _SettingPageState extends State<SettingPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const  SizedBox(
+            const SizedBox(
               height: 100,
             ),
             Container(
@@ -64,48 +88,61 @@ class _SettingPageState extends State<SettingPage> {
                     height: 18,
                   ),
                   SettingOption(
+                    icon: Icons.person,
+                    title: AppLocalizations.of(context)!.editProfile,
+                    trailing: const Icon(Icons.arrow_forward_ios),
+                    textColor: Colors.black,
+                    iconColor: Colors.white,
+                    iconBackgroundColor: Colors.green,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfilePage(),
+                        ),
+                      );
+                    },
+                  ),
+                  SettingOption(
                     icon: Icons.language,
-                    trailing: Text(AppLocalizations.of(context)!.en),
+                    trailing: Text(
+                      AppLocalizations.of(context)!.en,
+                      style: TextStyle(fontSize: _fontSize),
+                    ),
                     title: AppLocalizations.of(context)!.language,
                     textColor: Colors.black,
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.cyan,
                     onTap: () async {
-                      SharedPreferences prefs = await SharedPreferences.getInstance();
-                      String currentLanguage = prefs.getString('language') ?? 'ar';
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      String currentLanguage =
+                          prefs.getString('language') ?? 'ar';
 
-                      String newLanguage = currentLanguage == 'ar' ? 'en' : 'ar';
+                      String newLanguage =
+                          currentLanguage == 'ar' ? 'en' : 'ar';
                       await prefs.setString('language', newLanguage);
 
                       MyApp.setLocale(context, Locale(newLanguage));
                     },
                   ),
-
-
                   const SizedBox(
                     height: 8,
                   ),
                   SettingOption(
                     icon: Icons.nightlight_round,
                     title: AppLocalizations.of(context)!.darkMode,
-                    trailing:const Text(""),
+                    trailing: Switch(
+                      value: _isDarkMode,
+                      onChanged: _toggleTheme,
+                    ),
                     textColor: Colors.black,
                     iconColor: Colors.white,
-                    iconBackgroundColor: Colors.green,
-                    onTap: () {
-                    },
+                    iconBackgroundColor: Colors.black54,
+                    onTap: () {},
                   ),
                   const SizedBox(
                     height: 8,
-                  ),
-                  SettingOption(
-                    icon: Icons.text_fields,
-                    title: AppLocalizations.of(context)!.fontSize,
-                    trailing: Text(AppLocalizations.of(context)!.large),
-                    textColor: Colors.black,
-                    iconColor: Colors.white,
-                    iconBackgroundColor: Colors.purple,
-                    onTap: () {},
                   ),
                 ],
               ),
@@ -140,7 +177,7 @@ class _SettingPageState extends State<SettingPage> {
                       );
                     },
                   ),
-                 const SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   SettingOption(
@@ -155,7 +192,8 @@ class _SettingPageState extends State<SettingPage> {
                       await FirebaseAuth.instance.signOut();
 
                       // إزالة بيانات تسجيل الدخول من SharedPreferences
-                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
                       await prefs.remove('email');
                       await prefs.remove('password');
 
@@ -176,5 +214,4 @@ class _SettingPageState extends State<SettingPage> {
       ),
     );
   }
-
 }
