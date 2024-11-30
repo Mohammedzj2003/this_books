@@ -13,9 +13,9 @@ class _AllStoryPageState extends State<AllStoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavdrowerWidget(),
+      drawer: const NavdrowerWidget(),
       appBar: AppBar(
-        backgroundColor: Color(0xff283E50),
+        backgroundColor: const Color(0xff283E50),
         leading: Builder(
           builder: (context) => GestureDetector(
             onTap: () {

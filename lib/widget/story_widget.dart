@@ -48,7 +48,7 @@ class StoryWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                const Icon(Icons.star,color: Colors.amber,),
-                Text(storyList[index].rating.toString(),style: TextStyle(color: Colors.black87,fontSize: 17),),
+                Text(storyList[index].rating.toString(),style: const TextStyle(color: Colors.black87,fontSize: 17),),
               ],
             ),
           ],

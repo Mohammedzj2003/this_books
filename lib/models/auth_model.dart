@@ -45,7 +45,7 @@ class AuthPage {
       TextEditingController usernameController) async {
     if (passwordController.text.length < 8) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('كلمة المرور يجب أن تكون 8 خانات على الأقل.'),
         ),
       );
@@ -61,7 +61,7 @@ class AuthPage {
           await _auth.fetchSignInMethodsForEmail(emailController.text);
       if (signInMethods.isNotEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('البريد الإلكتروني مستخدم بالفعل من قبل حساب آخر.'),
           ),
         );
@@ -78,7 +78,7 @@ class AuthPage {
           .get();
       if (usernameQuery.docs.isNotEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const  SnackBar(
             content: Text('اسم المستخدم مستخدم بالفعل من قبل حساب آخر.'),
           ),
         );

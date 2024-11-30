@@ -36,7 +36,7 @@ class _NavdrowerWidgetState extends State<NavdrowerWidget> {
 }
 
 Widget buildHeader(BuildContext context) => Container(
-  color: Color(0xff283E50),
+  color: const Color(0xff283E50),
   width: 350,
   padding: EdgeInsets.only(
     top: MediaQuery.of(context).padding.top,

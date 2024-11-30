@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:this_books/main.dart';
 import 'package:this_books/page/login_page.dart';
 import 'package:this_books/page/reset_page.dart';
 import 'package:this_books/shared/constants.dart';
@@ -19,14 +20,14 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: NavdrowerWidget(),
+    return  Scaffold(
+      drawer: const NavdrowerWidget(),
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context)!.setting,
-          style: TextStyle(color: Colors.white70),
+          style: const TextStyle(color: Colors.white70),
         ),
-        backgroundColor: Color(0xff283E50),
+        backgroundColor:const Color(0xff283E50),
         leading: Builder(
           builder: (context) => GestureDetector(
             onTap: () {
@@ -48,7 +49,7 @@ class _SettingPageState extends State<SettingPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            SizedBox(
+            const  SizedBox(
               height: 100,
             ),
             Container(
@@ -59,7 +60,7 @@ class _SettingPageState extends State<SettingPage> {
               ),
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
                   SettingOption(
@@ -69,22 +70,32 @@ class _SettingPageState extends State<SettingPage> {
                     textColor: Colors.black,
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.cyan,
-                    onTap: () {},
+                    onTap: () async {
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      String currentLanguage = prefs.getString('language') ?? 'ar';
+
+                      String newLanguage = currentLanguage == 'ar' ? 'en' : 'ar';
+                      await prefs.setString('language', newLanguage);
+
+                      MyApp.setLocale(context, Locale(newLanguage));
+                    },
                   ),
-                  SizedBox(
+
+
+                  const SizedBox(
                     height: 8,
                   ),
                   SettingOption(
                     icon: Icons.nightlight_round,
                     title: AppLocalizations.of(context)!.darkMode,
-                    trailing:Text(""),
+                    trailing:const Text(""),
                     textColor: Colors.black,
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.green,
                     onTap: () {
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   SettingOption(
@@ -99,7 +110,7 @@ class _SettingPageState extends State<SettingPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Container(
@@ -110,13 +121,13 @@ class _SettingPageState extends State<SettingPage> {
               ),
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   SettingOption(
                     icon: Icons.refresh,
                     title: AppLocalizations.of(context)!.resetApp,
-                    trailing: Icon(Icons.arrow_forward_ios),
+                    trailing: const Icon(Icons.arrow_forward_ios),
                     textColor: Colors.black,
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.amber,
@@ -129,13 +140,13 @@ class _SettingPageState extends State<SettingPage> {
                       );
                     },
                   ),
-                  SizedBox(
+                 const SizedBox(
                     height: 10,
                   ),
                   SettingOption(
                     icon: Icons.logout,
                     title: AppLocalizations.of(context)!.logout,
-                    trailing: SizedBox.shrink(),
+                    trailing: const SizedBox.shrink(),
                     textColor: Colors.red,
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.red,
@@ -165,4 +176,5 @@ class _SettingPageState extends State<SettingPage> {
       ),
     );
   }
+
 }

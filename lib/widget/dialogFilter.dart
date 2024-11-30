@@ -24,7 +24,7 @@ class _DialogfilterState extends State<Dialogfilter> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   RadioListTile<String>(
-                    activeColor: Color(0xff283E50),
+                    activeColor: const Color(0xff283E50),
                     title: Text(AppLocalizations.of(context)!.latest),
                     value: 'Latest',
                     groupValue: _selectedOption,
@@ -38,7 +38,7 @@ class _DialogfilterState extends State<Dialogfilter> {
                     },
                   ),
                   RadioListTile<String>(
-                    activeColor: Color(0xff283E50),
+                    activeColor: const Color(0xff283E50),
                     title: Text(AppLocalizations.of(context)!.oldest),
                     value: 'Oldest',
                     groupValue: _selectedOption,
@@ -51,7 +51,7 @@ class _DialogfilterState extends State<Dialogfilter> {
                     },
                   ),
                   RadioListTile<String>(
-                    activeColor: Color(0xff283E50),
+                    activeColor: const Color(0xff283E50),
                     title: Text(AppLocalizations.of(context)!.sortAscending),
                     value: 'ascending',
                     groupValue: _selectedOption,
@@ -64,7 +64,7 @@ class _DialogfilterState extends State<Dialogfilter> {
                     },
                   ),
                   RadioListTile<String>(
-                    activeColor: Color(0xff283E50),
+                    activeColor: const Color(0xff283E50),
                     title: Text(AppLocalizations.of(context)!.sortDescending),
                     value: 'Descending',
                     groupValue: _selectedOption,
@@ -82,14 +82,14 @@ class _DialogfilterState extends State<Dialogfilter> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text(AppLocalizations.of(context)!.exit,style: TextStyle(color: Colors.black26 ),),
+                  child: Text(AppLocalizations.of(context)!.exit,style: const TextStyle(color: Colors.black26 ),),
                 ),
               ],
             );
           },
         );
       },
-      icon: Icon(Icons.filter_list_outlined, color: Colors.white, size: 30),
+      icon: const Icon(Icons.filter_list_outlined, color: Colors.white, size: 30),
     );
   }
   }
@@ -108,7 +108,7 @@ class SecondDialog {
 
           builder: (BuildContext context, StateSetter setState) {
             return AlertDialog(
-              title: Text(AppLocalizations.of(context)!.selectType,style: TextStyle(fontSize: 25),),
+              title: Text(AppLocalizations.of(context)!.selectType,style: const TextStyle(fontSize: 25),),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -140,7 +140,7 @@ class SecondDialog {
 
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10,left: 100,top: 10),
-                    child: Text(AppLocalizations.of(context)!.selectCategory,style: TextStyle(fontSize: 25),),
+                    child: Text(AppLocalizations.of(context)!.selectCategory,style: const TextStyle(fontSize: 25),),
                   ),
                   CheckboxListTile(
                     title: Text(AppLocalizations.of(context)!.horror),
@@ -201,7 +201,7 @@ class SecondDialog {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text(AppLocalizations.of(context)!.exit,style: TextStyle(color: Colors.black26 ),),
+                  child: Text(AppLocalizations.of(context)!.exit,style: const TextStyle(color: Colors.black26 ),),
                 ),
               ],
 
@@ -230,7 +230,7 @@ class thirdDialog {
                   Slider(
                     value: _currentRating,
                     min: 0,
-                    activeColor: Color(0xff283E50),
+                    activeColor: const Color(0xff283E50),
                     max: 10,
                     divisions: 9,
                     label: _currentRating.round().toString(),
@@ -249,13 +249,13 @@ class thirdDialog {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text(AppLocalizations.of(context)!.exit,style: TextStyle(color: Colors.black26 ),),
+                  child: Text(AppLocalizations.of(context)!.exit,style: const TextStyle(color: Colors.black26 ),),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text(AppLocalizations.of(context)!.submit,style: TextStyle(color: Color(0xff283E50) ),),
+                  child: Text(AppLocalizations.of(context)!.submit,style: const TextStyle(color: Color(0xff283E50) ),),
                 ),
               ],
             );

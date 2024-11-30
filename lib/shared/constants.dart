@@ -6,7 +6,7 @@ var decorationTextFiled = InputDecoration(
   // iconColor: Colors.grey,
   prefixIconColor: Colors.grey,
   suffixIconColor: Colors.grey,
-  hintStyle: TextStyle(
+  hintStyle: const TextStyle(
     color: Colors.grey
   ),
   enabledBorder: OutlineInputBorder(
@@ -78,7 +78,7 @@ class SettingOption extends StatelessWidget {
           color: iconBackgroundColor,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(5),
-          border: Border.all(width: 1, color: Color(0xf3f3f3)),
+          border: Border.all(width: 1, color: const Color(0xf3f3f3)),
         ),
         child: Icon(icon, color: iconColor),
       ),

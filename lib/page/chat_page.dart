@@ -20,7 +20,7 @@ class _ChatPageState extends State<ChatPage> {
 
     return Scaffold(
       appBar: AppBar(
-        actions: [
+        actions: const [
 
         ],
       ),
@@ -28,7 +28,7 @@ class _ChatPageState extends State<ChatPage> {
         messages: _messages,
         onSendPressed: _handleSendPressed,
         user: _user,
-        theme: DefaultChatTheme(
+        theme:const  DefaultChatTheme(
           inputBackgroundColor: Colors.blueGrey,
           inputTextColor: Colors.white,
           primaryColor: Colors.blue,

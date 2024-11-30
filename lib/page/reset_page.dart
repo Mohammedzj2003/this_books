@@ -23,12 +23,12 @@ class _ResetPageState extends State<ResetPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Color(0xfff3f3f3) ,
+      backgroundColor: const Color(0xfff3f3f3) ,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
 
@@ -42,9 +42,9 @@ class _ResetPageState extends State<ResetPage> {
                         )
                         );
                       },
-                          icon: Icon(Icons.navigate_before_outlined,size: 40,)
+                          icon: const Icon(Icons.navigate_before_outlined,size: 40,)
                       ),
-                   SizedBox(
+                   const SizedBox(
                      width: 20,
                    ),
                  ],
@@ -52,7 +52,7 @@ class _ResetPageState extends State<ResetPage> {
 
 
 
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
 
@@ -60,19 +60,19 @@ class _ResetPageState extends State<ResetPage> {
                       children: [
                         Text(AppLocalizations.of(context)!.resetApp,
 
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 35,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                       ],
                     ),
 
 
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Container(
@@ -83,7 +83,7 @@ class _ResetPageState extends State<ResetPage> {
               ),
               child: Column(
                 children: [
-                  SizedBox(
+                  const  SizedBox(
                     height: 20,
                   ),
               SettingOption(
@@ -91,7 +91,7 @@ class _ResetPageState extends State<ResetPage> {
                     .notifications_active,
                 title:AppLocalizations.of(context)!.notifications,
 
-                trailing: Text('on'),
+                trailing: const Text('on'),
                 textColor: Colors.black,
                 iconColor: Colors.white,
                 iconBackgroundColor: Colors.blue,
@@ -100,13 +100,13 @@ class _ResetPageState extends State<ResetPage> {
                     _obscureText = !_obscureText;
                   });
                 },),
-                  SizedBox(
+                  const  SizedBox(
                     height: 10,
                   ),
                   SettingOption(
                     icon: Icons.share,
                     title: AppLocalizations.of(context)!.shareApp,
-                    trailing: Icon(Icons.arrow_forward_ios),
+                    trailing: const Icon(Icons.arrow_forward_ios),
                     textColor: Colors.black,
                     iconColor: Colors.white ,
                     iconBackgroundColor: Colors.lightGreenAccent,
@@ -115,13 +115,13 @@ class _ResetPageState extends State<ResetPage> {
                     },
 
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   SettingOption(
                     icon: Icons.error_outline,
                     title: AppLocalizations.of(context)!.about,
-                    trailing: Icon(Icons.arrow_forward_ios),
+                    trailing: const Icon(Icons.arrow_forward_ios),
                     textColor: Colors.black,
                     iconColor: Colors.white ,
                     iconBackgroundColor: Colors.purple,
@@ -139,7 +139,7 @@ class _ResetPageState extends State<ResetPage> {
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
 
@@ -154,14 +154,14 @@ class _ResetPageState extends State<ResetPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
 
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
 
                   SettingOption(
                     icon: Icons.password,
                     title: AppLocalizations.of(context)!.changePassword,
-                    trailing: Icon(Icons.arrow_forward_ios),
+                    trailing: const Icon(Icons.arrow_forward_ios),
                     textColor: Colors.black,
                     iconColor: Colors.white ,
                     iconBackgroundColor: Colors.brown,
@@ -175,7 +175,7 @@ class _ResetPageState extends State<ResetPage> {
                     },
 
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
 

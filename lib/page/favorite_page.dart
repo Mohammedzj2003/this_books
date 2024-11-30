@@ -18,7 +18,7 @@ class _FavoritePageState extends State<FavoritePage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: widget.favoritedStory.isEmpty
-          ? Center(
+          ? const Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +47,7 @@ class _FavoritePageState extends State<FavoritePage> {
         child: GridView.builder(
           shrinkWrap: true,
           itemCount: widget.favoritedStory.length,
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          gridDelegate:const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200,
             mainAxisExtent: 210,
             crossAxisSpacing: 5,
@@ -57,7 +57,7 @@ class _FavoritePageState extends State<FavoritePage> {
             return Column(
               children: [
                 StoryWidget(index: index, storyList: widget.favoritedStory),
-                Divider(),
+                const Divider(),
               ],
             );
           },

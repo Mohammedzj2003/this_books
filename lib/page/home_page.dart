@@ -25,13 +25,13 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       //Navigtor Drower
-      drawer: NavdrowerWidget(),
+      drawer: const NavdrowerWidget(),
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context)!.home,
-          style: TextStyle(color: Colors.white70),
+          style: const TextStyle(color: Colors.white70),
         ),
-        backgroundColor: Color(0xff283E50),
+        backgroundColor: const Color(0xff283E50),
         surfaceTintColor: Colors.transparent,
         leading: Builder(
           builder: (context) {
@@ -49,12 +49,12 @@ class _HomePageState extends State<HomePage> {
               Navigator.push(
                 context,
                 PageTransition(
-                  child: ProfilePage(),
+                  child: const ProfilePage(),
                   type: PageTransitionType.rightToLeft,
                 ),
               );
             },
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsetsDirectional.only(end: 10),
               child: CircleAvatar(
                 radius: 17,
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              color: Color(0xff283E50),
+              color: const Color(0xff283E50),
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                 child: Column(
@@ -79,9 +79,9 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       children: [
                         Text(AppLocalizations.of(context)!.hi,
-                            style: TextStyle(
+                            style:const  TextStyle(
                                 color: Colors.white, fontSize: 25)),
-                        Text(
+                        const Text(
                           'Mohammed',
                           style:
                               TextStyle(color: Colors.white, fontSize: 25),
@@ -126,15 +126,15 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        Dialogfilter(),
-                        SizedBox(
+                        const Dialogfilter(),
+                        const SizedBox(
                           width: 5,
                         ),
                         IconButton(
                           onPressed: () {
                             SecondDialog.showSecondDialog(context);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.filter_alt_outlined,
                             color: Colors.white,
                             size: 30,
@@ -150,14 +150,14 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 AppLocalizations.of(context)!.famous,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0,
                 ),
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -171,7 +171,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   AppLocalizations.of(context)!.newStory,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18.0,
                   ),
@@ -182,7 +182,7 @@ class _HomePageState extends State<HomePage> {
                 shrinkWrap: true,
                 primary: false,
                 itemCount: _storyList.length,
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 200,
                   mainAxisExtent: 210,
                   crossAxisSpacing: 5,

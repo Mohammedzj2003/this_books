@@ -36,7 +36,7 @@ class _DetailPageState extends State<DetailPage> {
         child: Column(
           children: [
             Container(
-              color: Color(0xff283E50),
+              color: const Color(0xff283E50),
               padding: const EdgeInsets.all(25.0),
               child: Column(
                 children: [
@@ -67,12 +67,12 @@ class _DetailPageState extends State<DetailPage> {
                               Navigator.push(
                                 context,
                                 PageTransition(
-                                  child: ChatPage(),
+                                  child: const ChatPage(),
                                   type: PageTransitionType.rightToLeft,
                                 ),
                               );
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.comment,
                               color: Colors.white,
                               size: 30,
@@ -80,7 +80,7 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
@@ -94,7 +94,7 @@ class _DetailPageState extends State<DetailPage> {
                           width: 150,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text(
@@ -110,10 +110,10 @@ class _DetailPageState extends State<DetailPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Divider(
+            const Divider(
               height: 1,
               thickness: 2,
               color: Colors.black26,
@@ -126,7 +126,7 @@ class _DetailPageState extends State<DetailPage> {
               children: [
                 Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     const Icon(
@@ -134,7 +134,7 @@ class _DetailPageState extends State<DetailPage> {
                       size: 30.0,
                       color: Colors.amber,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     Text(
@@ -145,7 +145,7 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Column(
@@ -167,11 +167,11 @@ class _DetailPageState extends State<DetailPage> {
                         )),
                     Text(
                       AppLocalizations.of(context)!.favorite,
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Column(
@@ -194,7 +194,7 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Column(
@@ -224,7 +224,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             //description
@@ -248,10 +248,10 @@ class _DetailPageState extends State<DetailPage> {
       bottomSheet: Row(children: [
         Expanded(
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             height: 55,
             decoration: BoxDecoration(
-              color: Color(0xff283E50),
+              color:const Color(0xff283E50),
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
@@ -264,7 +264,7 @@ class _DetailPageState extends State<DetailPage> {
             child: Center(
               child: Text(
                 AppLocalizations.of(context)!.readNow,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
                 ),
@@ -273,9 +273,9 @@ class _DetailPageState extends State<DetailPage> {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(left: 20),
+          margin: const EdgeInsets.only(left: 20),
           decoration: BoxDecoration(
-            color: Color(0xff283E50),
+            color: const Color(0xff283E50),
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
@@ -286,7 +286,7 @@ class _DetailPageState extends State<DetailPage> {
             ],
           ),
           child: IconButton(
-            icon: Icon(Icons.mic, color: Colors.white),
+            icon: const Icon(Icons.mic, color: Colors.white),
             onPressed: () {
               // Handle microphone action
             },

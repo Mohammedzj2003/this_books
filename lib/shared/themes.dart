@@ -7,19 +7,19 @@ ThemeData kLightMode = ThemeData(
     selectionColor: Colors.green,
     selectionHandleColor: Colors.green,
   ),
-    colorScheme: ColorScheme.light(
+    colorScheme: const ColorScheme.light(
       primary: Color(0xfff3f3f3),
     ),
 );
 
 ThemeData kDarkMode = ThemeData(
   brightness: Brightness.dark,
-  textSelectionTheme: TextSelectionThemeData(
+  textSelectionTheme: const TextSelectionThemeData(
     cursorColor: Colors.green,
     selectionColor: Colors.green,
     selectionHandleColor: Colors.green,
   ),
-  colorScheme: ColorScheme.light(
+  colorScheme: const ColorScheme.light(
     background: Colors.black87,
   ),
 );

@@ -64,12 +64,12 @@ class _MovingCardScreenState extends State<MovingCardScreen> {
                     footer: Container(
                       width: double.infinity,
                       height: 45,
-                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
                       alignment: Alignment.center,
-                      decoration: BoxDecoration(color: Colors.black54),
+                      decoration: const BoxDecoration(color: Colors.black54),
                       child: Text(
                         _storyList[index].plantName,
-                        style: TextStyle(
+                        style: const TextStyle(
                             shadows: [
                               BoxShadow(
                                 color: Colors.black,

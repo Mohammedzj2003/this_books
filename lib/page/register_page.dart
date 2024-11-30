@@ -43,13 +43,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     Text(
                       AppLocalizations.of(context)!.newAccount,
                       textDirection: TextDirection.ltr,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Color(0xff283E50),
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                   ],
@@ -126,7 +126,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 child: Text(
                   AppLocalizations.of(context)!.next,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -138,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 33,
                 ),
                 Text.rich(
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 15,
                   ),
                   TextSpan(
@@ -146,17 +146,17 @@ class _RegisterPageState extends State<RegisterPage> {
                       TextSpan(
                         text: AppLocalizations.of(context)!.haveAccount,
                       ),
-                      TextSpan(text: ' '),
+                      const TextSpan(text: ' '),
                       TextSpan(
                           text: AppLocalizations.of(context)!.signIn,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.blue, fontWeight: FontWeight.bold),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => LoginPage()));
+                                      builder: (context) => const LoginPage()));
                             })
                     ],
                   ),

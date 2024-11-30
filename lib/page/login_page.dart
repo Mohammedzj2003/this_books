@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       overflow: TextOverflow.fade,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                   ],
@@ -101,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: Text(
                         AppLocalizations.of(context)!.forgetPassword,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.blue,
                           fontSize: 18,
                         ),
@@ -130,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       child: Text(
                         AppLocalizations.of(context)!.next,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -143,7 +143,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 33,
                 ),
                 Text.rich(
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 15,
                   ),
                   TextSpan(
@@ -151,17 +151,17 @@ class _LoginPageState extends State<LoginPage> {
                       TextSpan(
                         text: AppLocalizations.of(context)!.haveNotAccount,
                       ),
-                      TextSpan(text: ' '),
+                      const TextSpan(text: ' '),
                       TextSpan(
                           text: AppLocalizations.of(context)!.signUp,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.blue, fontWeight: FontWeight.bold),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => RegisterPage()));
+                                      builder: (context) => const RegisterPage()));
                             })
                     ],
                   ),
@@ -182,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Text(
                       AppLocalizations.of(context)!.guest,
-                      style: TextStyle(color: Colors.blue, fontSize: 15),
+                      style: const TextStyle(color: Colors.blue, fontSize: 15),
                     ),
                   ),
                 ),
