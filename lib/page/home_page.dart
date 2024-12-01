@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
     List<Story> _storyList = Story.storyList;
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primary,
       //Navigtor Drower
       drawer: const NavdrowerWidget(),
       appBar: AppBar(
@@ -105,7 +106,10 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Icon(
                                   Icons.search,
-                                  color: Colors.black54.withOpacity(.5),
+                                  color: Theme.of(context).textSelectionTheme.cursorColor
+                                ),
+                                SizedBox(
+                                  width: 5,
                                 ),
                                 Expanded(
                                   child: TextField(
@@ -122,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color:Theme.of(context).colorScheme.inversePrimary,
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),

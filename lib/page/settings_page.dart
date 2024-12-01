@@ -2,14 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:this_books/main.dart';
 import 'package:this_books/page/login_page.dart';
 import 'package:this_books/page/profile_page.dart';
 import 'package:this_books/page/reset_page.dart';
 import 'package:this_books/shared/constants.dart';
+import 'package:this_books/shared/settings_provider.dart';
 import 'package:this_books/widget/navDrower_widget.dart';
-
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
 
@@ -18,32 +19,10 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  bool _isDarkMode = false;
-  double _fontSize = 18.0;
-
-  void initState() {
-    super.initState();
-    _loadTheme();
-  }
-
-  Future<void> _loadTheme() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isDarkMode = prefs.getBool('isDarkMode') ?? false;
-    setState(() {
-      _isDarkMode = isDarkMode;
-    });
-  }
-
-  void _toggleTheme(bool isDark) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _isDarkMode = isDark;
-    });
-    await prefs.setBool('isDarkMode', isDark);
-  }
 
   @override
   Widget build(BuildContext context) {
+    final settingsProvider = Provider.of<SettingsProvider>(context);
     return Scaffold(
       drawer: const NavdrowerWidget(),
       appBar: AppBar(
@@ -79,7 +58,7 @@ class _SettingPageState extends State<SettingPage> {
             Container(
               height: 220,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.inversePrimary,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -91,7 +70,7 @@ class _SettingPageState extends State<SettingPage> {
                     icon: Icons.person,
                     title: AppLocalizations.of(context)!.editProfile,
                     trailing: const Icon(Icons.arrow_forward_ios),
-                    textColor: Colors.black,
+                    textColor: Theme.of(context).colorScheme.onPrimary,
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.green,
                     onTap: () {
@@ -107,20 +86,19 @@ class _SettingPageState extends State<SettingPage> {
                     icon: Icons.language,
                     trailing: Text(
                       AppLocalizations.of(context)!.en,
-                      style: TextStyle(fontSize: _fontSize),
                     ),
                     title: AppLocalizations.of(context)!.language,
-                    textColor: Colors.black,
+                    textColor: Theme.of(context).colorScheme.onPrimary,
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.cyan,
                     onTap: () async {
                       SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
+                      await SharedPreferences.getInstance();
                       String currentLanguage =
                           prefs.getString('language') ?? 'ar';
 
                       String newLanguage =
-                          currentLanguage == 'ar' ? 'en' : 'ar';
+                      currentLanguage == 'ar' ? 'en' : 'ar';
                       await prefs.setString('language', newLanguage);
 
                       MyApp.setLocale(context, Locale(newLanguage));
@@ -133,10 +111,10 @@ class _SettingPageState extends State<SettingPage> {
                     icon: Icons.nightlight_round,
                     title: AppLocalizations.of(context)!.darkMode,
                     trailing: Switch(
-                      value: _isDarkMode,
-                      onChanged: _toggleTheme,
+                      value: settingsProvider.isDarkMode,
+                      onChanged: settingsProvider.toggleTheme,
                     ),
-                    textColor: Colors.black,
+                    textColor: Theme.of(context).colorScheme.onPrimary,
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.black54,
                     onTap: () {},
@@ -153,7 +131,7 @@ class _SettingPageState extends State<SettingPage> {
             Container(
               height: 150,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.inversePrimary,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -165,7 +143,7 @@ class _SettingPageState extends State<SettingPage> {
                     icon: Icons.refresh,
                     title: AppLocalizations.of(context)!.resetApp,
                     trailing: const Icon(Icons.arrow_forward_ios),
-                    textColor: Colors.black,
+                    textColor: Theme.of(context).colorScheme.onPrimary,
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.amber,
                     onTap: () {
@@ -193,7 +171,7 @@ class _SettingPageState extends State<SettingPage> {
 
                       // إزالة بيانات تسجيل الدخول من SharedPreferences
                       SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
+                      await SharedPreferences.getInstance();
                       await prefs.remove('email');
                       await prefs.remove('password');
 

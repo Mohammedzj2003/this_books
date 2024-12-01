@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(33.0),
@@ -48,8 +48,8 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       AppLocalizations.of(context)!.welcomeBack,
                       textDirection: TextDirection.ltr,
-                      style: const TextStyle(
-                        color: Color(0xff283E50),
+                      style:  TextStyle(
+                        color: Theme.of(context).textSelectionTheme.cursorColor,
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                       ),
@@ -150,6 +150,10 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       TextSpan(
                         text: AppLocalizations.of(context)!.haveNotAccount,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Theme.of(context).textSelectionTheme.cursorColor,
+                        )
                       ),
                       const TextSpan(text: ' '),
                       TextSpan(

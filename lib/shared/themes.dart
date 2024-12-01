@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
 
 ThemeData kLightMode = ThemeData(
-    brightness: Brightness.light,
+  brightness: Brightness.light,
   textSelectionTheme: TextSelectionThemeData(
-    cursorColor: Colors.green,
+    cursorColor: Colors.black54,
     selectionColor: Colors.green,
     selectionHandleColor: Colors.green,
   ),
-    colorScheme: const ColorScheme.light(
-      primary: Color(0xfff3f3f3),
-    ),
+  colorScheme: const ColorScheme.light(
+    primary: Color(0xfff3f3f3),
+    onPrimary: Colors.black,
+    inversePrimary: Colors.white,
+    brightness: Brightness.light, // تأكد من تطابق brightness
+  ),
 );
 
 ThemeData kDarkMode = ThemeData(
   brightness: Brightness.dark,
   textSelectionTheme: const TextSelectionThemeData(
-    cursorColor: Colors.green,
+    cursorColor: Colors.white54,
     selectionColor: Colors.green,
     selectionHandleColor: Colors.green,
   ),
-  colorScheme: const ColorScheme.light(
-    background: Colors.black87,
+  colorScheme: const ColorScheme.dark(
+    primary: Color(0xff1b1b1b),
+    onPrimary: Colors.white,
+    inversePrimary: Color(0xff2e2e2e),
+    brightness: Brightness.dark, // تأكد من تطابق brightness
   ),
 );

@@ -1,15 +1,34 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:this_books/page/home_page.dart';
-import 'package:this_books/page/login_page.dart';
+import 'package:this_books/page/onboarding.dart';
+import 'package:this_books/page/settings_page.dart';
 import 'package:this_books/page/splash_screen.dart';
+import 'package:this_books/shared/settings_provider.dart';
+import 'package:this_books/shared/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MyApp());
+  await Firebase.initializeApp(
+    // options: FirebaseOptions(
+      // apiKey: "YOUR_API_KEY",
+      // authDomain: "YOUR_AUTH_DOMAIN",
+      // projectId: "YOUR_PROJECT_ID",
+      // storageBucket: "YOUR_STORAGE_BUCKET",
+      // messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      // appId: "YOUR_APP_ID",
+      // measurementId: "YOUR_MEASUREMENT_ID",
+    // ),
+  );
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => SettingsProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -26,13 +45,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Locale _locale = const Locale('ar');
-  bool _isDarkMode = false;
 
   @override
   void initState() {
     super.initState();
     _loadLocale();
-    _loadTheme();
   }
 
   void setLocale(Locale locale) {
@@ -49,31 +66,17 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  Future<void> _loadTheme() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isDarkMode = prefs.getBool('isDarkMode') ?? false;
-    setState(() {
-      _isDarkMode = isDarkMode;
-    });
-  }
-
-  void _toggleTheme(bool isDark) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _isDarkMode = isDark;
-    });
-    await prefs.setBool('isDarkMode', isDark);
-  }
-
   @override
   Widget build(BuildContext context) {
+    final settingsProvider = Provider.of<SettingsProvider>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: _locale,
       title: 'Akmar',
-      theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      theme: settingsProvider.isDarkMode ? kDarkMode : kLightMode,
       home: FutureBuilder(
         future: _checkLoginStatus(),
         builder: (context, snapshot) {
@@ -81,9 +84,9 @@ class _MyAppState extends State<MyApp> {
             return const SplashScreen();
           } else {
             if (snapshot.data == true) {
-              return const HomePage();
+              return const SettingPage();
             } else {
-              return const LoginPage();
+              return const OnBoarding();
             }
           }
         },

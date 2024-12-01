@@ -23,7 +23,7 @@ class _ResetPageState extends State<ResetPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xfff3f3f3) ,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -78,7 +78,7 @@ class _ResetPageState extends State<ResetPage> {
             Container(
               height: 220,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.inversePrimary,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -92,7 +92,7 @@ class _ResetPageState extends State<ResetPage> {
                 title:AppLocalizations.of(context)!.notifications,
 
                 trailing: const Text('on'),
-                textColor: Colors.black,
+                textColor: Theme.of(context).colorScheme.onPrimary,
                 iconColor: Colors.white,
                 iconBackgroundColor: Colors.blue,
                 onTap: () {
@@ -107,7 +107,7 @@ class _ResetPageState extends State<ResetPage> {
                     icon: Icons.share,
                     title: AppLocalizations.of(context)!.shareApp,
                     trailing: const Icon(Icons.arrow_forward_ios),
-                    textColor: Colors.black,
+                    textColor: Theme.of(context).colorScheme.onPrimary,
                     iconColor: Colors.white ,
                     iconBackgroundColor: Colors.lightGreenAccent,
                     onTap:(){
@@ -122,7 +122,7 @@ class _ResetPageState extends State<ResetPage> {
                     icon: Icons.error_outline,
                     title: AppLocalizations.of(context)!.about,
                     trailing: const Icon(Icons.arrow_forward_ios),
-                    textColor: Colors.black,
+                    textColor: Theme.of(context).colorScheme.onPrimary,
                     iconColor: Colors.white ,
                     iconBackgroundColor: Colors.purple,
                     onTap:(){
@@ -146,7 +146,7 @@ class _ResetPageState extends State<ResetPage> {
             Container(
               height:100 ,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.inversePrimary,
                 borderRadius: BorderRadius.circular(20),
               ),
 
@@ -162,7 +162,7 @@ class _ResetPageState extends State<ResetPage> {
                     icon: Icons.password,
                     title: AppLocalizations.of(context)!.changePassword,
                     trailing: const Icon(Icons.arrow_forward_ios),
-                    textColor: Colors.black,
+                    textColor: Theme.of(context).colorScheme.onPrimary,
                     iconColor: Colors.white ,
                     iconBackgroundColor: Colors.brown,
                     onTap:(){

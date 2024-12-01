@@ -52,31 +52,34 @@ class WhoAreWePage extends StatelessWidget {
               Text(
               AppLocalizations.of(context)!.aboutUs,
                 overflow: TextOverflow.fade,
-                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold , color: Color(0xff283E50)),
+                style:  TextStyle(fontSize: 24, fontWeight: FontWeight.bold ,
+                    color: Theme.of(context).colorScheme.onPrimary,
+
+        ),
               ),
               const SizedBox(height: 16),
               Text(
                 AppLocalizations.of(context)!.aboutUsDec,
                 overflow: TextOverflow.fade,
-                style: const TextStyle(fontSize: 16,color: Color(0xae020202)),
+                style:  TextStyle(fontSize: 16,color: Theme.of(context).textSelectionTheme.cursorColor,),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 32),
               Text(
                 AppLocalizations.of(context)!.ourTeam,
                 overflow: TextOverflow.fade,
-                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xff283E50)),
+                style:  TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onPrimary,),
               ),
               const SizedBox(height: 16),
               Text(
                 AppLocalizations.of(context)!.ourTeamDec,
                 overflow: TextOverflow.fade,
-                style:const TextStyle(fontSize: 16,color: Color(0xae020202)),
+                style: TextStyle(fontSize: 16,color: Theme.of(context).textSelectionTheme.cursorColor,),
               ),
               const SizedBox(height: 32),
               Text(
                   AppLocalizations.of(context)!.contactUs,
                 overflow: TextOverflow.fade,
-                style:const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xff283E50)),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onPrimary,),
               ),
               const SizedBox(height: 16),
               InkWell(

@@ -36,10 +36,10 @@ class StoryWidget extends StatelessWidget {
             const SizedBox(height: 5.0),
             Text(
               storyList[index].plantName,
-              style: const TextStyle(
+              style:  TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textSelectionTheme.cursorColor,
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -48,7 +48,7 @@ class StoryWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                const Icon(Icons.star,color: Colors.amber,),
-                Text(storyList[index].rating.toString(),style: const TextStyle(color: Colors.black87,fontSize: 17),),
+                Text(storyList[index].rating.toString(),style:  TextStyle(color: Theme.of(context).textSelectionTheme.cursorColor,fontSize: 17),),
               ],
             ),
           ],

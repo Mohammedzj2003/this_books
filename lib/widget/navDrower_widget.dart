@@ -66,6 +66,7 @@ Widget buildHeader(BuildContext context) => Container(
 
 Widget buildMenuItem(BuildContext context) => Container(
   padding:const EdgeInsets.all(24),
+  color: Theme.of(context).colorScheme.primary,
   child: Wrap(
     runSpacing: 16,
     children: [
@@ -73,16 +74,16 @@ Widget buildMenuItem(BuildContext context) => Container(
         padding: const EdgeInsets.all(15.0),
         child:  Text(
           AppLocalizations.of(context)!.public,
-          style:const TextStyle(
-              color: Colors.black54,
+          style: TextStyle(
+              color: Theme.of(context).textSelectionTheme.cursorColor,
             ),
           ),
         ),
 
-      const Divider(
+       Divider(
         height: 1,
         thickness: 2,
-        color: Colors.black26,
+        color: Theme.of(context).textSelectionTheme.cursorColor,
         indent: 16,
         endIndent: 16,
       ),
@@ -123,16 +124,16 @@ Widget buildMenuItem(BuildContext context) => Container(
         padding: const EdgeInsets.all(15.0),
         child:  Text(
           AppLocalizations.of(context)!.myOwn,
-            style:const TextStyle(
-              color: Colors.black54,
+            style: TextStyle(
+              color: Theme.of(context).textSelectionTheme.cursorColor,
             ),
           ),
         ),
 
-      const Divider(
+       Divider(
         height: 1,
         thickness: 2,
-        color: Colors.black26,
+        color: Theme.of(context).textSelectionTheme.cursorColor,
         indent: 16,
         endIndent: 16,
       ),
@@ -158,15 +159,15 @@ Widget buildMenuItem(BuildContext context) => Container(
         padding: const EdgeInsets.all(15.0),
         child:  Text(
           AppLocalizations.of(context)!.other,
-            style: const TextStyle(
-              color: Colors.black54,
+            style:  TextStyle(
+              color: Theme.of(context).textSelectionTheme.cursorColor,
             ),
           ),
         ),
-      const Divider(
+       Divider(
         height: 1,
         thickness: 2,
-        color: Colors.black26,
+        color: Theme.of(context).textSelectionTheme.cursorColor,
         indent: 16,
         endIndent: 16,
       ),
