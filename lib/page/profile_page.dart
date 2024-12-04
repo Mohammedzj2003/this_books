@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:this_books/page/edit_profile_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -10,6 +13,9 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  User? user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,8 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.navigate_before,
-                color: Colors.white, size: 35),
+            icon: const Icon(Icons.navigate_before, color: Colors.white, size: 35),
           ),
         ),
       ),
@@ -45,73 +50,61 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                const SizedBox(height: 120),
-                Stack(
-                  children: [
-                    const CircleAvatar(
-                      radius: 70,
-                      backgroundImage: const AssetImage('images/logo.png'),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.black26,
-                          shape: BoxShape.circle,
-                        ),
-                        child: IconButton(
-                          icon: const Icon(Icons.edit, color: Colors.white),
-                          onPressed: () {
-                            // Handle edit action
-                          },
-                        ),
+          user != null
+              ? StreamBuilder<DocumentSnapshot>(
+            stream: _firestore.collection('users').doc(user!.uid).snapshots(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              }
+              if (!snapshot.hasData || !snapshot.data!.exists) {
+                return Center(child: Text('No data available'));
+              }
+              var userData = snapshot.data!;
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 120),
+                      Stack(
+                        children: [
+                          const CircleAvatar(
+                            radius: 70,
+                            backgroundImage: const AssetImage('images/logo.png'),
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: Colors.black26,
+                                shape: BoxShape.circle,
+                              ),
+                              child: IconButton(
+                                icon: const Icon(Icons.edit, color: Colors.white),
+                                onPressed: () {
+                                  // Handle edit action
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 100),
+                      itemProfile(AppLocalizations.of(context)!.name, userData['name'], CupertinoIcons.person),
+                      const SizedBox(height: 10),
+                      itemProfile(AppLocalizations.of(context)!.usarName, userData['username'], CupertinoIcons.tag),
+                      const SizedBox(height: 10),
+
+                    ],
+                  ),
                 ),
-                const SizedBox(height: 100),
-                itemProfile(AppLocalizations.of(context)!.name, 'Ahad Hashmi',
-                    CupertinoIcons.person),
-                const SizedBox(height: 10),
-                itemProfile(AppLocalizations.of(context)!.usarName, '@q_2df',
-                    CupertinoIcons.tag),
-                const SizedBox(height: 10),
-                itemProfile(AppLocalizations.of(context)!.email,
-                    'ahadhashmideveloper@gmail.com', CupertinoIcons.mail),
-                const SizedBox(height: 20),
-              ],
-            ),
-          ),
+              );
+            },
+          )
+              : Center(child: Text('User is not logged in')),
         ],
-      ),
-      bottomSheet: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        height: 55,
-        decoration: BoxDecoration(
-          color: const Color(0xff283E50),
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              offset: const Offset(0, 1),
-              blurRadius: 5,
-              color: Colors.blue.withOpacity(.3),
-            )
-          ],
-        ),
-        child: Center(
-          child: Text(
-            AppLocalizations.of(context)!.editProfile,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 20.0,
-            ),
-          ),
-        ),
       ),
     );
   }
@@ -147,6 +140,14 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         trailing: Icon(Icons.arrow_forward),
         tileColor: Theme.of(context).colorScheme.primary,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EditProfilePage(title: title, subtitle: subtitle),
+            ),
+          );
+        },
       ),
     );
   }

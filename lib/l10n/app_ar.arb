@@ -75,7 +75,8 @@
   "selectYourRating" : "حدد تقييمك: ",
   "submit" : "إرسال",
   "readNow" : "قراءة الآن",
-  "mistakeLogin" : "خطا في الدخول"
+  "mistakeLogin" : "خطا في الدخول",
+  "date" : "التاريخ"
 
 
 }

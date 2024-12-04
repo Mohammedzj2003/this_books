@@ -285,6 +285,16 @@ class _DetailPageState extends State<DetailPage> {
           child: IconButton(
             icon: const Icon(Icons.mic, color: Colors.white),
             onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('سيتم اضافة الميزة قريبا',
+                      style: TextStyle(
+                       color: Theme.of(context).textSelectionTheme.selectionColor,
+                      ),
+                    ),
+                    backgroundColor: Colors.blue,
+                  ),
+              );
               // Handle microphone action
             },
           ),

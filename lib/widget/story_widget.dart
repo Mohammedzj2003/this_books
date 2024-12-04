@@ -47,7 +47,13 @@ class StoryWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
              const Icon(Icons.star,color: Colors.amber,),
-              Text(storyList[index].rating.toString(),style:  TextStyle(color: Theme.of(context).textSelectionTheme.cursorColor,fontSize: 17),),
+              Text(storyList[index].rating.toString(),
+                style:  TextStyle(
+                    color: Theme.of(context).textSelectionTheme.cursorColor,
+                    fontSize: 17,
+                ),
+                maxLines: 1,
+              ),
             ],
           ),
         ],

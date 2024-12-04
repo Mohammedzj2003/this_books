@@ -181,24 +181,25 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            GridView.builder(
-                shrinkWrap: true,
-                primary: false,
-                itemCount: _storyList.length,
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  mainAxisExtent: 210,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
-                ),
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      StoryWidget(index: index, storyList: _storyList),
-                    ],
-                  );
-                }),
-          ],
+      GridView.builder(
+        shrinkWrap: true,
+        primary: false,
+        itemCount: _storyList.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          mainAxisExtent: 210,
+          crossAxisSpacing: 5,
+          mainAxisSpacing: 6,
+        ),
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              StoryWidget(index: index, storyList: _storyList),
+            ],
+          );
+        },
+      ),
+      ],
         ),
       ),
     );
