@@ -5,31 +5,21 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:this_books/page/home_page.dart';
 import 'package:this_books/page/onboarding.dart';
-import 'package:this_books/page/settings_page.dart';
 import 'package:this_books/page/splash_screen.dart';
 import 'package:this_books/shared/settings_provider.dart';
 import 'package:this_books/shared/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    // options: FirebaseOptions(
-      // apiKey: "YOUR_API_KEY",
-      // authDomain: "YOUR_AUTH_DOMAIN",
-      // projectId: "YOUR_PROJECT_ID",
-      // storageBucket: "YOUR_STORAGE_BUCKET",
-      // messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      // appId: "YOUR_APP_ID",
-      // measurementId: "YOUR_MEASUREMENT_ID",
-    // ),
-  );
-  runApp(
+  await Firebase.initializeApp();
+    runApp(
     ChangeNotifierProvider(
       create: (context) => SettingsProvider(),
       child: const MyApp(),
     ),
   );
 }
+
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -84,7 +74,7 @@ class _MyAppState extends State<MyApp> {
             return const SplashScreen();
           } else {
             if (snapshot.data == true) {
-              return const SettingPage();
+              return const HomePage();
             } else {
               return const OnBoarding();
             }

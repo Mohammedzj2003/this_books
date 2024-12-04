@@ -215,7 +215,7 @@ class SecondDialog {
 
 class thirdDialog {
   static void showRatingDialog(BuildContext context) {
-    double _currentRating = 0;
+    double currentRating = 0;
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -228,20 +228,20 @@ class thirdDialog {
                 children: [
                   Text(AppLocalizations.of(context)!.selectYourRating),
                   Slider(
-                    value: _currentRating,
+                    value: currentRating,
                     min: 0,
                     activeColor: const Color(0xff283E50),
                     max: 10,
                     divisions: 9,
-                    label: _currentRating.round().toString(),
+                    label: currentRating.round().toString(),
                     onChanged: (double value) {
                       setState(() {
-                        _currentRating = value;
+                        currentRating = value;
                         
                       });
                     },
                   ),
-                  Text(AppLocalizations.of(context)!.rating+' ${_currentRating.round()}'),
+                  Text('${AppLocalizations.of(context)!.rating} ${currentRating.round()}'),
                 ],
               ),
               actions: [

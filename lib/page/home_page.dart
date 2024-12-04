@@ -58,6 +58,7 @@ class _HomePageState extends State<HomePage> {
             child: const Padding(
               padding: EdgeInsetsDirectional.only(end: 10),
               child: CircleAvatar(
+                backgroundColor: Colors.white,
                 radius: 17,
                 backgroundImage: AssetImage(
                   'images/logo.png',
@@ -97,37 +98,35 @@ class _HomePageState extends State<HomePage> {
                             horizontal: 16.0,
                           ),
                           width: 280,
-
-                          //Search
-                          child: Container(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.search,
-                                  color: Theme.of(context).textSelectionTheme.cursorColor
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Expanded(
-                                  child: TextField(
-                                    showCursor: false,
-                                    decoration: InputDecoration(
-                                      hintText:
-                                          AppLocalizations.of(context)!.search,
-                                      border: InputBorder.none,
-                                      focusedBorder: InputBorder.none,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                           decoration: BoxDecoration(
                             color:Theme.of(context).colorScheme.inversePrimary,
                             borderRadius: BorderRadius.circular(20),
+                          ),
+
+                          //Search
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.search,
+                                color: Theme.of(context).textSelectionTheme.cursorColor
+                              ),
+                             const SizedBox(
+                                width: 5,
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  showCursor: false,
+                                  decoration: InputDecoration(
+                                    hintText:
+                                        AppLocalizations.of(context)!.search,
+                                    border: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         const Dialogfilter(),

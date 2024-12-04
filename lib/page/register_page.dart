@@ -29,7 +29,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(33.0),
@@ -43,8 +43,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     Text(
                       AppLocalizations.of(context)!.newAccount,
                       textDirection: TextDirection.ltr,
-                      style: const TextStyle(
-                        color: Color(0xff283E50),
+                      style:  TextStyle(
+                        color: Theme.of(context).textSelectionTheme.selectionColor,
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                       ),
@@ -62,6 +62,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   keyboardType: TextInputType.text,
                   obscureText: false,
                   decoration: decorationTextFiled.copyWith(
+                    fillColor: Theme.of(context).colorScheme.inversePrimary,
                     hintText: AppLocalizations.of(context)!.enterUserName,
                     prefixIcon: const Icon(Icons.person_rounded),
                   ),
@@ -73,6 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   keyboardType: TextInputType.text,
                   obscureText: false,
                   decoration: decorationTextFiled.copyWith(
+                    fillColor: Theme.of(context).colorScheme.inversePrimary,
                     hintText: AppLocalizations.of(context)!.enterName,
                     prefixIcon: const Icon(Icons.person_pin_rounded),
                   ),
@@ -84,6 +86,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: decorationTextFiled.copyWith(
+                    fillColor: Theme.of(context).colorScheme.inversePrimary,
                     hintText: AppLocalizations.of(context)!.enterEmail,
                     prefixIcon: const Icon(Icons.email),
                   ),
@@ -93,6 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _passwordController,
                   keyboardType: TextInputType.text,
                   decoration: decorationTextFiled.copyWith(
+                    fillColor: Theme.of(context).colorScheme.inversePrimary,
                     hintText: AppLocalizations.of(context)!.password,
                     prefixIcon: const Icon(Icons.lock),
                     suffixIcon: IconButton(

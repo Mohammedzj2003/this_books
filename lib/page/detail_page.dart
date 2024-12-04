@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:this_books/models/storys.dart';
@@ -177,10 +176,10 @@ class _DetailPageState extends State<DetailPage> {
                 Column(
                   children: [
                     IconButton(
-                      icon: const Icon(
+                      icon:  Icon(
                         Icons.stars_outlined,
                         size: 30.0,
-                        color: Colors.black26,
+                        color: Theme.of(context).textSelectionTheme.cursorColor,
                       ),
                       onPressed: () {
                         thirdDialog.showRatingDialog(context);
@@ -230,15 +229,13 @@ class _DetailPageState extends State<DetailPage> {
             //description
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Container(
-                child: Text(
-                  currentStory.decription,
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    height: 1.5,
-                    fontSize: 20,
-                    color: Colors.black.withOpacity(.7),
-                  ),
+              child: Text(
+                currentStory.decription,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  height: 1.5,
+                  fontSize: 20,
+                  color: Theme.of(context).textSelectionTheme.cursorColor,
                 ),
               ),
             ),
@@ -273,7 +270,7 @@ class _DetailPageState extends State<DetailPage> {
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(left: 20),
+          margin: const EdgeInsets.only(left: 20, right: 20),
           decoration: BoxDecoration(
             color: const Color(0xff283E50),
             shape: BoxShape.circle,
@@ -298,7 +295,7 @@ class _DetailPageState extends State<DetailPage> {
 }
 
 class FavoriteStoriesProvider with ChangeNotifier {
-  List<Story> _favoriteStories = [];
+  final List<Story> _favoriteStories = [];
 
   List<Story> get favoriteStories => _favoriteStories;
 
@@ -314,7 +311,7 @@ class FavoriteStoriesProvider with ChangeNotifier {
 }
 
 class ListStoriesProvider with ChangeNotifier {
-  List<Story> _listStories = [];
+  final List<Story> _listStories = [];
 
   List<Story> get favoriteStories => _listStories;
 

@@ -1,5 +1,4 @@
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:this_books/models/auth_model.dart';
@@ -49,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                       AppLocalizations.of(context)!.welcomeBack,
                       textDirection: TextDirection.ltr,
                       style:  TextStyle(
-                        color: Theme.of(context).textSelectionTheme.cursorColor,
+                        color: Theme.of(context).textSelectionTheme.selectionColor,
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                       ),
@@ -67,8 +66,8 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: decorationTextFiled.copyWith(
+                    fillColor: Theme.of(context).colorScheme.inversePrimary,
                     hintText: AppLocalizations.of(context)!.enterEmail,
-                    border: const OutlineInputBorder(),
                     prefixIcon: const Icon(Icons.email),
                   ),
                 ),
@@ -77,8 +76,8 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _passwordController,
                   keyboardType: TextInputType.text,
                   decoration: decorationTextFiled.copyWith(
+                    fillColor: Theme.of(context).colorScheme.inversePrimary,
                     hintText: AppLocalizations.of(context)!.password,
-                    border: const OutlineInputBorder(),
                     prefixIcon: const Icon(Icons.lock),
                     suffixIcon: IconButton(
                       icon: Icon(

@@ -6,10 +6,10 @@ import 'package:this_books/page/detail_page.dart';
 
 class StoryWidget extends StatelessWidget {
   const StoryWidget({
-    Key? key,
+    super.key,
     required this.index,
     required this.storyList,
-  }) : super(key: key);
+  });
   final int index;
   final List<Story> storyList;
 
@@ -25,34 +25,32 @@ class StoryWidget extends StatelessWidget {
                 ),
                 type: PageTransitionType.bottomToTop));
       },
-      child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(
-              storyList[index].imageURL,
-              fit: BoxFit.contain,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            storyList[index].imageURL,
+            fit: BoxFit.contain,
+          ),
+          const SizedBox(height: 5.0),
+          Text(
+            storyList[index].plantName,
+            style:  TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Theme.of(context).textSelectionTheme.cursorColor,
             ),
-            const SizedBox(height: 5.0),
-            Text(
-              storyList[index].plantName,
-              style:  TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: Theme.of(context).textSelectionTheme.cursorColor,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-               const Icon(Icons.star,color: Colors.amber,),
-                Text(storyList[index].rating.toString(),style:  TextStyle(color: Theme.of(context).textSelectionTheme.cursorColor,fontSize: 17),),
-              ],
-            ),
-          ],
-        ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+             const Icon(Icons.star,color: Colors.amber,),
+              Text(storyList[index].rating.toString(),style:  TextStyle(color: Theme.of(context).textSelectionTheme.cursorColor,fontSize: 17),),
+            ],
+          ),
+        ],
       ),
     );
   }

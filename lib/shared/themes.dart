@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 ThemeData kLightMode = ThemeData(
   brightness: Brightness.light,
-  textSelectionTheme: TextSelectionThemeData(
+  textSelectionTheme: const TextSelectionThemeData(
     cursorColor: Colors.black54,
-    selectionColor: Colors.green,
+    selectionColor: Colors.black,
     selectionHandleColor: Colors.green,
   ),
   colorScheme: const ColorScheme.light(
@@ -19,7 +19,7 @@ ThemeData kDarkMode = ThemeData(
   brightness: Brightness.dark,
   textSelectionTheme: const TextSelectionThemeData(
     cursorColor: Colors.white54,
-    selectionColor: Colors.green,
+    selectionColor: Colors.white,
     selectionHandleColor: Colors.green,
   ),
   colorScheme: const ColorScheme.dark(

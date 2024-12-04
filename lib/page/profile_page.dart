@@ -21,9 +21,9 @@ class _ProfilePageState extends State<ProfilePage> {
           child: IconButton(
             onPressed: () {
               Navigator.pop(context);
-
             },
-            icon: const Icon(Icons.navigate_before, color: Colors.white, size: 35),
+            icon: const Icon(Icons.navigate_before,
+                color: Colors.white, size: 35),
           ),
         ),
       ),
@@ -36,7 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
               child: const Center(
                 child: Text(
                   'Profile',
-                  style:  TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
@@ -75,11 +75,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
                 const SizedBox(height: 100),
-                itemProfile(AppLocalizations.of(context)!.name, 'Ahad Hashmi', CupertinoIcons.person),
+                itemProfile(AppLocalizations.of(context)!.name, 'Ahad Hashmi',
+                    CupertinoIcons.person),
                 const SizedBox(height: 10),
-                itemProfile(AppLocalizations.of(context)!.usarName, '@q_2df', CupertinoIcons.tag),
+                itemProfile(AppLocalizations.of(context)!.usarName, '@q_2df',
+                    CupertinoIcons.tag),
                 const SizedBox(height: 10),
-                itemProfile(AppLocalizations.of(context)!.email, 'ahadhashmideveloper@gmail.com', CupertinoIcons.mail),
+                itemProfile(AppLocalizations.of(context)!.email,
+                    'ahadhashmideveloper@gmail.com', CupertinoIcons.mail),
                 const SizedBox(height: 20),
               ],
             ),
@@ -116,7 +119,7 @@ class _ProfilePageState extends State<ProfilePage> {
   itemProfile(String title, String subtitle, IconData iconData) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -128,11 +131,22 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
       ),
       child: ListTile(
-        title: Text(title),
-        subtitle: Text(subtitle),
-        leading: Icon(iconData),
-        trailing: Icon(Icons.arrow_forward, color: Colors.grey.shade400),
-        tileColor: Colors.white,
+        title: Text(
+          title,
+          style: TextStyle(
+              color: Theme.of(context).textSelectionTheme.selectionColor),
+        ),
+        subtitle: Text(
+          subtitle,
+          style: TextStyle(
+              color: Theme.of(context).textSelectionTheme.cursorColor),
+        ),
+        leading: Icon(
+          iconData,
+          color: Theme.of(context).textSelectionTheme.selectionColor,
+        ),
+        trailing: Icon(Icons.arrow_forward),
+        tileColor: Theme.of(context).colorScheme.primary,
       ),
     );
   }

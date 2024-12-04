@@ -152,16 +152,15 @@ class Story {
 
   //Get the favorated items
   static List<Story> getFavoritedPlants() {
-    List<Story> _travelList = Story.storyList;
-    return _travelList.where((element) => element.isFavorated == true).toList();
+    List<Story> travelList = Story.storyList;
+    return travelList.where((element) => element.isFavorated == true).toList();
   }
 
 
 //Get the favorated items
   static List<Story> getListPlants() {
-    List<Story> _travelList = Story.storyList;
-    return _travelList.where((element) => element.isList == true).toList();
+    List<Story> travelList = Story.storyList;
+    return travelList.where((element) => element.isList == true).toList();
   }
 }
 
-//السيناريو كل اتي يضغط المستخدم على الايقونة تظهر ديالق اولا النوع روايات قصص بعدها سطرين الفئة مثل الاطفال خيالي رومانسي كوميدي اكشن دموي رعب يمكن اختيار اكثر من عنصر
