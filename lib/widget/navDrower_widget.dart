@@ -53,7 +53,7 @@ Widget buildHeader(BuildContext context) => Container(
       const Text(
         'Mohammwd Al.jrjawy',
         style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+            fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
       ),
       const Text(
         'user@example.com',

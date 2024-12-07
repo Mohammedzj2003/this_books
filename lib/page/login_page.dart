@@ -1,11 +1,12 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:this_books/models/auth_model.dart';
 import 'package:this_books/page/Forget%20Password/forgetPass_Page.dart';
 import 'package:this_books/page/register_page.dart';
 import 'package:this_books/page/welcome_page.dart';
-
 import '../shared/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -29,8 +30,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 
+
+
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.put(AuthController());
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -141,6 +145,46 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 33,
                 ),
+                SizedBox(
+                  width: double.infinity,
+                  child: GestureDetector(
+                    child: ElevatedButton(
+                      onPressed: (){
+                        authController.loginWithEmail();
+                        },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff1649e4),
+                        shadowColor: Colors.black,
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 15),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset('icons/google.png',width: 25,height: 25,),
+
+                         const SizedBox(
+                            width: 15,
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.gmail,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 33,
+                ),
                 Text.rich(
                   style: const TextStyle(
                     fontSize: 15,
@@ -150,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                       TextSpan(
                         text: AppLocalizations.of(context)!.haveNotAccount,
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 15,
                           color: Theme.of(context).textSelectionTheme.cursorColor,
                         )
                       ),
@@ -189,23 +233,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset('icons/facebook.png'),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Image.asset('icons/twitter.png'),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Image.asset('icons/google.png'),
-                  ],
-                ),
               ],
             ),
           ),
@@ -214,3 +241,5 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
+

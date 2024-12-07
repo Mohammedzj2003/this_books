@@ -165,23 +165,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset('icons/facebook.png'),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Image.asset('icons/twitter.png'),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Image.asset('icons/google.png'),
-                  ],
-                ),
               ],
             ),
           ),

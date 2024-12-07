@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:this_books/page/home_page.dart';
-import 'package:this_books/page/onboarding.dart';
+import 'package:this_books/models/auth_model.dart';
 import 'package:this_books/page/splash_screen.dart';
 import 'package:this_books/shared/settings_provider.dart';
 import 'package:this_books/shared/themes.dart';
@@ -12,14 +12,14 @@ import 'package:this_books/shared/themes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-    runApp(
+  await AuthController().initNotifications();
+  runApp(
     ChangeNotifierProvider(
       create: (context) => SettingsProvider(),
       child: const MyApp(),
     ),
   );
 }
-
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -60,34 +60,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     final settingsProvider = Provider.of<SettingsProvider>(context);
 
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: _locale,
       title: 'Akmar',
       theme: settingsProvider.isDarkMode ? kDarkMode : kLightMode,
-      home: FutureBuilder(
-        future: _checkLoginStatus(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const SplashScreen();
-          } else {
-            if (snapshot.data == true) {
-              return const HomePage();
-            } else {
-              return const OnBoarding();
-            }
-          }
-        },
-      ),
+      home: const SplashScreen(),
     );
-  }
-
-  Future<bool> _checkLoginStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? email = prefs.getString('email');
-    String? password = prefs.getString('password');
-    return email != null && password != null;
   }
 }

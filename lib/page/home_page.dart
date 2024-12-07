@@ -82,11 +82,11 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(AppLocalizations.of(context)!.hi,
                             style:const  TextStyle(
-                                color: Colors.white, fontSize: 25)),
+                                color: Colors.white, fontSize: 20)),
                         const Text(
                           'Mohammed',
                           style:
-                              TextStyle(color: Colors.white, fontSize: 25),
+                              TextStyle(color: Colors.white, fontSize: 20),
                         ),
                       ],
                     ),
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16.0,
                           ),
-                          width: 280,
+                          width: 220,
                           decoration: BoxDecoration(
                             color:Theme.of(context).colorScheme.inversePrimary,
                             borderRadius: BorderRadius.circular(20),
@@ -130,9 +130,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         const Dialogfilter(),
-                        const SizedBox(
-                          width: 5,
-                        ),
+
                         IconButton(
                           onPressed: () {
                             SecondDialog.showSecondDialog(context);

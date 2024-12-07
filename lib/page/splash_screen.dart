@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:this_books/page/onboarding.dart';
-import 'package:this_books/page/login_page.dart'; // استيراد صفحة تسجيل الدخول
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:this_books/page/home_page.dart';
+import 'package:this_books/page/onboarding.dart';
+import 'package:this_books/page/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,31 +15,41 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+
     _navigateToNextScreen();
   }
 
   Future<void> _navigateToNextScreen() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? seenOnboarding = prefs.getBool('seenOnboarding');
+    final prefs = await SharedPreferences.getInstance();
 
-    Future.delayed(
-      const Duration(seconds: 3),
-          () {
-        if (mounted) {
-          if (seenOnboarding == true) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const LoginPage()),
-            );
-          } else {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const OnBoarding()),
-            );
-          }
-        }
-      },
-    );
+    // تحقق مما إذا كان المستخدم شاهد شاشة الإعداد
+    final hasSeenOnBoarding = prefs.getBool('hasSeenOnBoarding') ?? false;
+
+    // تحقق مما إذا كان المستخدم قد سجل الدخول
+    final isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+
+    // تأخير لمدة 5 ثوانٍ (شاشة البداية)
+    await Future.delayed(const Duration(seconds: 5));
+
+    if (!hasSeenOnBoarding) {
+      // إذا لم يشاهد شاشة الإعداد، انتقل إلى شاشة الإعداد
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const OnBoarding()),
+      );
+    } else if (!isLoggedIn) {
+      // إذا لم يقم بتسجيل الدخول، انتقل إلى شاشة تسجيل الدخول
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginPage()),
+      );
+    } else {
+      // إذا كان مسجلًا بالفعل، انتقل إلى الصفحة الرئيسية
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomePage()),
+      );
+    }
   }
 
   @override
@@ -56,6 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 height: 400,
               ),
               const SizedBox(height: 16.0),
+              const CircularProgressIndicator(color: Colors.white),
             ],
           ),
         ),
