@@ -4,6 +4,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:this_books/models/auth_model.dart';
 import 'package:this_books/page/login_page.dart';
 import 'package:this_books/shared/constants.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -35,8 +37,8 @@ class _RegisterPageState extends State<RegisterPage> {
             padding: const EdgeInsets.all(33.0),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 150,
+                 SizedBox(
+                  height: 150.h,
                 ),
                 Row(
                   children: [
@@ -45,17 +47,17 @@ class _RegisterPageState extends State<RegisterPage> {
                       textDirection: TextDirection.ltr,
                       style:  TextStyle(
                         color: Theme.of(context).textSelectionTheme.selectionColor,
-                        fontSize: 25,
+                        fontSize: 25.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(
-                      width: 20,
+                     SizedBox(
+                      width: 20.w,
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 33,
+                 SizedBox(
+                  height: 33.h,
                 ),
                 TextFormField(
                   controller: _usernameController,
@@ -67,8 +69,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     prefixIcon: const Icon(Icons.person_rounded),
                   ),
                 ),
-                const SizedBox(
-                  height: 33,
+                 SizedBox(
+                  height: 33.h,
                 ),
                 TextFormField(
                   keyboardType: TextInputType.text,
@@ -79,8 +81,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     prefixIcon: const Icon(Icons.person_pin_rounded),
                   ),
                 ),
-                const SizedBox(
-                  height: 33,
+                 SizedBox(
+                  height: 33.h,
                 ),
                 TextFormField(
                   controller: _emailController,
@@ -91,7 +93,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     prefixIcon: const Icon(Icons.email),
                   ),
                 ),
-                const SizedBox(height: 33),
+                 SizedBox(height: 33.h),
                 TextFormField(
                   controller: _passwordController,
                   keyboardType: TextInputType.text,
@@ -108,8 +110,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   obscureText: _obscureText,
                 ),
-                const SizedBox(
-                  height: 33,
+                 SizedBox(
+                  height: 33.h,
                 ),
             SizedBox(
               width: double.infinity,
@@ -130,20 +132,20 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 child: Text(
                   AppLocalizations.of(context)!.next,
-                  style: const TextStyle(
+                  style:  TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
-                const SizedBox(
-                  height: 33,
+                 SizedBox(
+                  height: 33.h,
                 ),
                 Text.rich(
-                  style: const TextStyle(
-                    fontSize: 15,
+                  style:  TextStyle(
+                    fontSize: 15.sp,
                   ),
                   TextSpan(
                     children: [

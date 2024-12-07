@@ -7,6 +7,7 @@ import 'package:this_books/page/my_list_page.dart';
 import 'package:this_books/page/settings_page.dart';
 import 'package:this_books/page/time_line_page.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
@@ -36,7 +37,7 @@ class _NavdrowerWidgetState extends State<NavdrowerWidget> {
 
 Widget buildHeader(BuildContext context) => Container(
   color: const Color(0xff283E50),
-  width: 350,
+  width: 350.w,
   padding: EdgeInsets.only(
     top: MediaQuery.of(context).padding.top,
     bottom: 10,
@@ -46,18 +47,18 @@ Widget buildHeader(BuildContext context) => Container(
       const SizedBox(height: 12),
       Image.asset(
         'images/logo.png',
-        width: 100,
-        height: 100,
+        width: 100.w,
+        height: 100.h,
       ),
-      const SizedBox(height: 12),
-      const Text(
+       SizedBox(height: 12.h),
+       Text(
         'Mohammwd Al.jrjawy',
         style: TextStyle(
-            fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
+            fontSize: 15.sp, fontWeight: FontWeight.bold, color: Colors.white),
       ),
-      const Text(
+       Text(
         'user@example.com',
-        style: TextStyle(fontSize: 14, color: Colors.grey),
+        style: TextStyle(fontSize: 14.sp, color: Colors.grey),
       ),
     ],
   ),
@@ -80,7 +81,7 @@ Widget buildMenuItem(BuildContext context) => Container(
         ),
 
        Divider(
-        height: 1,
+        height: 1.h,
         thickness: 2,
         color: Theme.of(context).textSelectionTheme.cursorColor,
         indent: 16,
@@ -116,8 +117,8 @@ Widget buildMenuItem(BuildContext context) => Container(
                   builder: (context) => const AllStoryPage()));
         },
       ),
-      const SizedBox(
-        height: 33,
+       SizedBox(
+        height: 33.h,
       ),
       Padding(
         padding: const EdgeInsets.all(15.0),
@@ -130,7 +131,7 @@ Widget buildMenuItem(BuildContext context) => Container(
         ),
 
        Divider(
-        height: 1,
+        height: 1.h,
         thickness: 2,
         color: Theme.of(context).textSelectionTheme.cursorColor,
         indent: 16,
@@ -151,8 +152,8 @@ Widget buildMenuItem(BuildContext context) => Container(
                   builder: (context) => const MyListPage()));
         },
       ),
-      const  SizedBox(
-        height: 33,
+        SizedBox(
+        height: 33.h,
       ),
       Padding(
         padding: const EdgeInsets.all(15.0),
@@ -164,7 +165,7 @@ Widget buildMenuItem(BuildContext context) => Container(
           ),
         ),
        Divider(
-        height: 1,
+        height: 1.h,
         thickness: 2,
         color: Theme.of(context).textSelectionTheme.cursorColor,
         indent: 16,

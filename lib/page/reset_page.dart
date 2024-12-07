@@ -6,6 +6,8 @@ import 'package:this_books/models/whoarewe_page.dart';
 import 'package:this_books/page/Forget%20Password/forgetPass_Page.dart';
 import 'package:this_books/page/settings_page.dart';
 import 'package:this_books/shared/constants.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 
 
@@ -28,8 +30,8 @@ class _ResetPageState extends State<ResetPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const SizedBox(
-              height: 50,
+             SizedBox(
+              height: 50.h,
             ),
 
                Row(
@@ -44,47 +46,47 @@ class _ResetPageState extends State<ResetPage> {
                       },
                           icon: const Icon(Icons.navigate_before_outlined,size: 40,)
                       ),
-                   const SizedBox(
-                     width: 20,
+                    SizedBox(
+                     width: 20.w,
                    ),
                  ],
                ),
 
 
 
-            const SizedBox(
-              height: 50,
+             SizedBox(
+              height: 50.h,
             ),
 
                     Row(
                       children: [
                         Text(AppLocalizations.of(context)!.resetApp,
 
-                          style: const TextStyle(
-                            fontSize: 35,
+                          style:  TextStyle(
+                            fontSize: 35.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(
-                          width: 20,
+                         SizedBox(
+                          width: 20.w,
                         ),
                       ],
                     ),
 
 
-            const SizedBox(
-              height: 50,
+             SizedBox(
+              height: 50.h,
             ),
             Container(
-              height: 220,
+              height: 220.h,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.inversePrimary,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
                 children: [
-                  const  SizedBox(
-                    height: 20,
+                    SizedBox(
+                    height: 20.h,
                   ),
               SettingOption(
                 icon: _obscureText ? Icons.notifications : Icons
@@ -100,8 +102,8 @@ class _ResetPageState extends State<ResetPage> {
                     _obscureText = !_obscureText;
                   });
                 },),
-                  const  SizedBox(
-                    height: 10,
+                    SizedBox(
+                    height: 10.h,
                   ),
                   SettingOption(
                     icon: Icons.share,
@@ -115,8 +117,8 @@ class _ResetPageState extends State<ResetPage> {
                     },
 
                   ),
-                  const SizedBox(
-                    height: 10,
+                   SizedBox(
+                    height: 10.h,
                   ),
                   SettingOption(
                     icon: Icons.error_outline,
@@ -139,12 +141,12 @@ class _ResetPageState extends State<ResetPage> {
               ),
             ),
 
-            const SizedBox(
-              height: 50,
+             SizedBox(
+              height: 50.h,
             ),
 
             Container(
-              height:100 ,
+              height:100.h ,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.inversePrimary,
                 borderRadius: BorderRadius.circular(20),
@@ -154,8 +156,8 @@ class _ResetPageState extends State<ResetPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
 
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height: 20.h,
                   ),
 
                   SettingOption(
@@ -175,8 +177,8 @@ class _ResetPageState extends State<ResetPage> {
                     },
 
                   ),
-                  const SizedBox(
-                    height: 10,
+                   SizedBox(
+                    height: 10.h,
                   ),
 
                 ],

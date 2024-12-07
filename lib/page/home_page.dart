@@ -10,6 +10,8 @@ import 'package:this_books/widget/dialogFilter.dart';
 import 'package:this_books/widget/movingCard_screen.dart';
 import 'package:this_books/widget/navDrower_widget.dart';
 import 'package:this_books/widget/story_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -81,12 +83,12 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       children: [
                         Text(AppLocalizations.of(context)!.hi,
-                            style:const  TextStyle(
-                                color: Colors.white, fontSize: 20)),
-                        const Text(
+                            style:  TextStyle(
+                                color: Colors.white, fontSize: 20.sp)),
+                         Text(
                           'Mohammed',
                           style:
-                              TextStyle(color: Colors.white, fontSize: 20),
+                              TextStyle(color: Colors.white, fontSize: 20.sp),
                         ),
                       ],
                     ),
@@ -97,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16.0,
                           ),
-                          width: 220,
+                          width: 220.w,
                           decoration: BoxDecoration(
                             color:Theme.of(context).colorScheme.inversePrimary,
                             borderRadius: BorderRadius.circular(20),
@@ -112,8 +114,8 @@ class _HomePageState extends State<HomePage> {
                                 Icons.search,
                                 color: Theme.of(context).textSelectionTheme.cursorColor
                               ),
-                             const SizedBox(
-                                width: 5,
+                              SizedBox(
+                                width: 5.h,
                               ),
                               Expanded(
                                 child: TextField(
@@ -135,10 +137,10 @@ class _HomePageState extends State<HomePage> {
                           onPressed: () {
                             SecondDialog.showSecondDialog(context);
                           },
-                          icon: const Icon(
+                          icon:  Icon(
                             Icons.filter_alt_outlined,
                             color: Colors.white,
-                            size: 30,
+                            size: 30.sp,
                           ),
                         ),
                       ],
@@ -151,15 +153,15 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 AppLocalizations.of(context)!.famous,
-                style: const TextStyle(
+                style:  TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
+                  fontSize: 18.0.sp,
                 ),
               ),
             ),
 
-            const SizedBox(
-              height: 10,
+             SizedBox(
+              height: 10.h,
             ),
 
             //PageView 5s
@@ -172,9 +174,9 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   AppLocalizations.of(context)!.newStory,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
+                    fontSize: 18.0.sp,
                   ),
                 ),
               ),

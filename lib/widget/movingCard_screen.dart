@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:this_books/models/storys.dart';
 import 'package:this_books/page/detail_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class MovingCardScreen extends StatefulWidget {
   @override
@@ -20,7 +22,7 @@ class _MovingCardScreenState extends State<MovingCardScreen> {
     }
 
     return SizedBox(
-      height: size.height * .25,
+      height: size.height * .25.h,
       child: ListView.builder(
           itemCount: _storyList.length,
           scrollDirection: Axis.horizontal,
@@ -36,7 +38,7 @@ class _MovingCardScreenState extends State<MovingCardScreen> {
                         type: PageTransitionType.bottomToTop));
               },
               child: Container(
-                width: 155,
+                width: 155.w,
                 margin: EdgeInsetsDirectional.only(
                     end: 10, start: index == 0 ? 10 : 0),
                 child: ClipRRect(
@@ -63,21 +65,21 @@ class _MovingCardScreenState extends State<MovingCardScreen> {
                     ),
                     footer: Container(
                       width: double.infinity,
-                      height: 45,
+                      height: 45.h,
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       alignment: Alignment.center,
                       decoration: const BoxDecoration(color: Colors.black54),
                       child: Text(
                         _storyList[index].plantName,
-                        style: const TextStyle(
-                            shadows: [
+                        style:  TextStyle(
+                            shadows: const [
                               BoxShadow(
                                 color: Colors.black,
                                 offset: Offset(3, 3),
                               )
                             ],
                             color: Colors.white,
-                            fontSize: 25,
+                            fontSize: 25.sp,
                             fontWeight: FontWeight.w700),
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,

@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,8 +43,8 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.all(33.0),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 200,
+                 SizedBox(
+                  height: 200.h,
                 ),
                 Row(
                   children: [
@@ -53,18 +53,18 @@ class _LoginPageState extends State<LoginPage> {
                       textDirection: TextDirection.ltr,
                       style:  TextStyle(
                         color: Theme.of(context).textSelectionTheme.selectionColor,
-                        fontSize: 25,
+                        fontSize: 25.sp,
                         fontWeight: FontWeight.bold,
                       ),
                       overflow: TextOverflow.fade,
                     ),
-                    const SizedBox(
-                      width: 20,
+                     SizedBox(
+                      width: 20.w,
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 33,
+                 SizedBox(
+                  height: 33.h,
                 ),
                 TextFormField(
                   controller: _emailController,
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: const Icon(Icons.email),
                   ),
                 ),
-                const SizedBox(height: 33),
+                 SizedBox(height: 33.h),
                 TextFormField(
                   controller: _passwordController,
                   keyboardType: TextInputType.text,
@@ -104,14 +104,14 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: Text(
                         AppLocalizations.of(context)!.forgetPassword,
-                        style: const TextStyle(
+                        style:  TextStyle(
                           color: Colors.blue,
-                          fontSize: 18,
+                          fontSize: 18.sp,
                         ),
                       )),
                 ),
-                const SizedBox(
-                  height: 33,
+                 SizedBox(
+                  height: 33.h,
                 ),
                 //ButtonSign In
                 SizedBox(
@@ -133,17 +133,17 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       child: Text(
                         AppLocalizations.of(context)!.next,
-                        style: const TextStyle(
+                        style:  TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 33,
+                 SizedBox(
+                  height: 33.h,
                 ),
                 SizedBox(
                   width: double.infinity,
@@ -165,16 +165,16 @@ class _LoginPageState extends State<LoginPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset('icons/google.png',width: 25,height: 25,),
+                          Image.asset('icons/google.png',width: 25.w,height: 25.h,),
 
-                         const SizedBox(
-                            width: 15,
+                          SizedBox(
+                            width: 15.w,
                           ),
                           Text(
                             AppLocalizations.of(context)!.gmail,
-                            style: const TextStyle(
+                            style:  TextStyle(
                               color: Colors.white,
-                              fontSize: 14,
+                              fontSize: 14.sp,
                             ),
                           ),
                         ],
@@ -182,19 +182,19 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 33,
+                 SizedBox(
+                  height: 33.h,
                 ),
                 Text.rich(
-                  style: const TextStyle(
-                    fontSize: 15,
+                  style:  TextStyle(
+                    fontSize: 15.sp,
                   ),
                   TextSpan(
                     children: [
                       TextSpan(
                         text: AppLocalizations.of(context)!.haveNotAccount,
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 15.sp,
                           color: Theme.of(context).textSelectionTheme.cursorColor,
                         )
                       ),
@@ -229,7 +229,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Text(
                       AppLocalizations.of(context)!.guest,
-                      style: const TextStyle(color: Colors.blue, fontSize: 15),
+                      style:  TextStyle(color: Colors.blue, fontSize: 15.sp),
                     ),
                   ),
                 ),

@@ -11,6 +11,10 @@ import 'package:this_books/page/reset_page.dart';
 import 'package:this_books/shared/constants.dart';
 import 'package:this_books/shared/settings_provider.dart';
 import 'package:this_books/widget/navDrower_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+
+
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
 
@@ -40,8 +44,8 @@ class _SettingPageState extends State<SettingPage> {
               padding: const EdgeInsets.all(15.0),
               child: SvgPicture.asset(
                 'icons/vector.svg',
-                width: 5,
-                height: 5,
+                width: 5.w,
+                height: 5.h,
               ),
             ),
           ),
@@ -52,19 +56,19 @@ class _SettingPageState extends State<SettingPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const SizedBox(
-              height: 100,
+             SizedBox(
+              height: 100.h,
             ),
             Container(
-              height: 220,
+              height: 220.h,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.inversePrimary,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 18,
+                   SizedBox(
+                    height: 18.h,
                   ),
                   SettingOption(
                     icon: Icons.person,
@@ -104,8 +108,8 @@ class _SettingPageState extends State<SettingPage> {
                       MyApp.setLocale(context, Locale(newLanguage));
                     },
                   ),
-                  const SizedBox(
-                    height: 8,
+                   SizedBox(
+                    height: 8.h,
                   ),
                   SettingOption(
                     icon: Icons.nightlight_round,
@@ -119,25 +123,25 @@ class _SettingPageState extends State<SettingPage> {
                     iconBackgroundColor: Colors.black54,
                     onTap: () {},
                   ),
-                  const SizedBox(
-                    height: 8,
+                   SizedBox(
+                    height: 8.h,
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 50,
+             SizedBox(
+              height: 50.h,
             ),
             Container(
-              height: 150,
+              height: 150.h,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.inversePrimary,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height: 20.h,
                   ),
                   SettingOption(
                     icon: Icons.refresh,
@@ -155,8 +159,8 @@ class _SettingPageState extends State<SettingPage> {
                       );
                     },
                   ),
-                  const SizedBox(
-                    height: 10,
+                   SizedBox(
+                    height: 10.h,
                   ),
                   SettingOption(
                     icon: Icons.logout,

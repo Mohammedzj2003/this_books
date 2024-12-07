@@ -1,10 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:this_books/models/storys.dart';
 import 'package:this_books/page/chat_page.dart';
 import 'package:this_books/widget/dialogFilter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class DetailPage extends StatefulWidget {
   final int storyId;
@@ -47,8 +48,8 @@ class _DetailPageState extends State<DetailPage> {
                           Navigator.pop(context);
                         },
                         child: Container(
-                          height: 30,
-                          width: 30,
+                          height: 30.h,
+                          width: 30.w,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25),
                             color: Colors.white,
@@ -71,16 +72,16 @@ class _DetailPageState extends State<DetailPage> {
                                 ),
                               );
                             },
-                            icon: const Icon(
+                            icon:  Icon(
                               Icons.comment,
                               color: Colors.white,
-                              size: 30,
+                              size: 30.sp,
                             )),
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height: 20.h,
                   ),
                   Row(
                     children: [
@@ -93,15 +94,15 @@ class _DetailPageState extends State<DetailPage> {
                           width: 150,
                         ),
                       ),
-                      const SizedBox(
-                        width: 10,
+                       SizedBox(
+                        width: 10.w,
                       ),
                       Text(
                         currentStory.plantName,
-                        style: const TextStyle(
+                        style:  TextStyle(
                           color: Colors.white, // لون النص
                           fontWeight: FontWeight.bold,
-                          fontSize: 30.0,
+                          fontSize: 30.0.sp,
                         ),
                       ),
                     ],
@@ -109,11 +110,11 @@ class _DetailPageState extends State<DetailPage> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
+             SizedBox(
+              height: 10.h,
             ),
-            const Divider(
-              height: 1,
+             Divider(
+              height: 1.h,
               thickness: 2,
               color: Colors.black26,
               indent: 16,
@@ -125,27 +126,27 @@ class _DetailPageState extends State<DetailPage> {
               children: [
                 Column(
                   children: [
-                    const SizedBox(
-                      height: 10,
+                     SizedBox(
+                      height: 10.h,
                     ),
-                    const Icon(
+                     Icon(
                       Icons.star,
-                      size: 30.0,
+                      size: 30.0.sp,
                       color: Colors.amber,
                     ),
-                    const SizedBox(
-                      height: 12,
+                     SizedBox(
+                      height: 12.h,
                     ),
                     Text(
                       currentStory.rating.toString(),
-                      style: const TextStyle(
-                        fontSize: 20.0,
+                      style:  TextStyle(
+                        fontSize: 20.0.sp,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  width: 20,
+                 SizedBox(
+                  width: 20.w,
                 ),
                 Column(
                   children: [
@@ -158,7 +159,7 @@ class _DetailPageState extends State<DetailPage> {
                           });
                         },
                         icon: Icon(
-                          size: 30.0,
+                          size: 30.0.sp,
                           currentStory.isFavorated == true
                               ? Icons.favorite
                               : Icons.favorite_border,
@@ -166,19 +167,19 @@ class _DetailPageState extends State<DetailPage> {
                         )),
                     Text(
                       AppLocalizations.of(context)!.favorite,
-                      style: const TextStyle(fontSize: 20),
+                      style:  TextStyle(fontSize: 20.sp),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  width: 20,
+                 SizedBox(
+                  width: 20.w,
                 ),
                 Column(
                   children: [
                     IconButton(
                       icon:  Icon(
                         Icons.stars_outlined,
-                        size: 30.0,
+                        size: 30.0.sp,
                         color: Theme.of(context).textSelectionTheme.cursorColor,
                       ),
                       onPressed: () {
@@ -187,14 +188,14 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                     Text(
                       AppLocalizations.of(context)!.rating,
-                      style: const TextStyle(
-                        fontSize: 20.0,
+                      style:  TextStyle(
+                        fontSize: 20.0.sp,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  width: 20,
+                 SizedBox(
+                  width: 20.w,
                 ),
                 Column(
                   children: [
@@ -206,7 +207,7 @@ class _DetailPageState extends State<DetailPage> {
                         });
                       },
                       icon: Icon(
-                        size: 30.0,
+                        size: 30.0.sp,
                         currentStory.isList == true
                             ? Icons.add_box_outlined
                             : Icons.verified,
@@ -215,16 +216,16 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                     Text(
                       AppLocalizations.of(context)!.addList,
-                      style: const TextStyle(
-                        fontSize: 20.0,
+                      style:  TextStyle(
+                        fontSize: 20.0.sp,
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-            const SizedBox(
-              height: 50,
+             SizedBox(
+              height: 50.h,
             ),
             //description
             Padding(
@@ -233,8 +234,8 @@ class _DetailPageState extends State<DetailPage> {
                 currentStory.decription,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
-                  height: 1.5,
-                  fontSize: 20,
+                  height: 1.5.h,
+                  fontSize: 20.sp,
                   color: Theme.of(context).textSelectionTheme.cursorColor,
                 ),
               ),
@@ -261,9 +262,9 @@ class _DetailPageState extends State<DetailPage> {
             child: Center(
               child: Text(
                 AppLocalizations.of(context)!.readNow,
-                style: const TextStyle(
+                style:  TextStyle(
                   color: Colors.white,
-                  fontSize: 20.0,
+                  fontSize: 20.0.sp,
                 ),
               ),
             ),

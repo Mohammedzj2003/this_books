@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:this_books/widget/navDrower_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 
 class WhoAreWePage extends StatelessWidget {
@@ -36,8 +38,8 @@ class WhoAreWePage extends StatelessWidget {
               padding: const EdgeInsets.all(15.0),
               child: SvgPicture.asset(
                 'icons/vector.svg',
-                width: 5,
-                height: 5,
+                width: 5.w,
+                height: 5.h,
               ),
             ),
           ),
@@ -52,76 +54,76 @@ class WhoAreWePage extends StatelessWidget {
               Text(
               AppLocalizations.of(context)!.aboutUs,
                 overflow: TextOverflow.fade,
-                style:  TextStyle(fontSize: 24, fontWeight: FontWeight.bold ,
+                style:  TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold ,
                     color: Theme.of(context).colorScheme.onPrimary,
 
         ),
               ),
-              const SizedBox(height: 16),
+               SizedBox(height: 16.h),
               Text(
                 AppLocalizations.of(context)!.aboutUsDec,
                 overflow: TextOverflow.fade,
-                style:  TextStyle(fontSize: 16,color: Theme.of(context).textSelectionTheme.cursorColor,),
+                style:  TextStyle(fontSize: 16.sp,color: Theme.of(context).textSelectionTheme.cursorColor,),
               ),
-              const SizedBox(height: 32),
+               SizedBox(height: 32.h),
               Text(
                 AppLocalizations.of(context)!.ourTeam,
                 overflow: TextOverflow.fade,
-                style:  TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onPrimary,),
+                style:  TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onPrimary,),
               ),
-              const SizedBox(height: 16),
+               SizedBox(height: 16.h),
               Text(
                 AppLocalizations.of(context)!.ourTeamDec,
                 overflow: TextOverflow.fade,
-                style: TextStyle(fontSize: 16,color: Theme.of(context).textSelectionTheme.cursorColor,),
+                style: TextStyle(fontSize: 16.sp,color: Theme.of(context).textSelectionTheme.cursorColor,),
               ),
-              const SizedBox(height: 32),
+               SizedBox(height: 32.h),
               Text(
                   AppLocalizations.of(context)!.contactUs,
                 overflow: TextOverflow.fade,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onPrimary,),
+                style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onPrimary,),
               ),
-              const SizedBox(height: 16),
+               SizedBox(height: 16.h),
               InkWell(
                 onTap: () => _launchURL('mailto:q2df2003@gmail.com'),
                 child: Row(
                   children: [
-                    Image.network("https://img.icons8.com/3d-fluency/94/google-logo.png",width: 20,height: 20,),
-                    const Text(
+                    Image.network("https://img.icons8.com/3d-fluency/94/google-logo.png",width: 20.w,height: 20.h,),
+                     Text(
                       '  : q2df2003@gmail.com',
                       overflow: TextOverflow.fade,
 
-                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                      style: TextStyle(fontSize: 16.sp, color: Colors.blue),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 8),
+               SizedBox(height: 8.h),
               InkWell(
                 onTap: () => _launchURL('https://wa.me/+97059-223-8378'),
                 child: Row(
                   children: [
-                    Image.network("https://img.icons8.com/color/48/whatsapp--v1.png",width: 25,height: 25,),
-                    const Text(
+                    Image.network("https://img.icons8.com/color/48/whatsapp--v1.png",width: 25.w,height: 25.h,),
+                     Text(
                       '  : +97059-223-8378',
                       overflow: TextOverflow.fade,
 
-                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                      style: TextStyle(fontSize: 16.sp, color: Colors.blue),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 8),
+               SizedBox(height: 8.h),
               InkWell(
                 onTap: () => _launchURL('https://www.instagram.com/q_2df'),
                 child: Row(
                   children: [
-                    Image.network("https://img.icons8.com/3d-fluency/94/instagram-logo.png",height: 25,width: 25,),
-                    const Text(
+                    Image.network("https://img.icons8.com/3d-fluency/94/instagram-logo.png",height: 25.h,width: 25.w,),
+                     Text(
                       '  : @q_2df',
                       overflow: TextOverflow.fade,
 
-                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                      style: TextStyle(fontSize: 16.sp, color: Colors.blue),
                     ),
                   ],
                 ),

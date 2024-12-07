@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:this_books/widget/navDrower_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class TimeLinePage extends StatefulWidget {
   const TimeLinePage({super.key});
@@ -25,8 +27,8 @@ class _TimeLinePageState extends State<TimeLinePage> {
               padding: const EdgeInsets.all(15.0),
               child: SvgPicture.asset(
                 'icons/vector.svg',
-                width: 5,
-                height: 5,
+                width: 5.w,
+                height: 5.h,
               ),
             ),
           ),

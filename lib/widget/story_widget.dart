@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:page_transition/page_transition.dart';
 import 'package:this_books/models/storys.dart';
 import 'package:this_books/page/detail_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StoryWidget extends StatelessWidget {
   const StoryWidget({
@@ -32,12 +32,12 @@ class StoryWidget extends StatelessWidget {
             storyList[index].imageURL,
             fit: BoxFit.contain,
           ),
-          const SizedBox(height: 5.0),
+           SizedBox(height: 5.h),
           Text(
             storyList[index].plantName,
             style:  TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 18,
+              fontSize: 18.sp,
               color: Theme.of(context).textSelectionTheme.cursorColor,
             ),
             maxLines: 1,
@@ -50,7 +50,7 @@ class StoryWidget extends StatelessWidget {
               Text(storyList[index].rating.toString(),
                 style:  TextStyle(
                     color: Theme.of(context).textSelectionTheme.cursorColor,
-                    fontSize: 17,
+                    fontSize: 17.sp,
                 ),
                 maxLines: 1,
               ),

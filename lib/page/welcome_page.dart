@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:this_books/page/home_page.dart';
-import 'package:this_books/page/login_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -45,8 +46,8 @@ class _WelcomePageState extends State<WelcomePage> {
               children: [
                 Row(
                   children: [
-                    const SizedBox(
-                      width: 10,
+                     SizedBox(
+                      width: 10.w,
                     ),
                     IconButton(
                       onPressed: () {
@@ -57,9 +58,9 @@ class _WelcomePageState extends State<WelcomePage> {
                           ),
                         );
                       },
-                      icon: const Icon(
+                      icon:  Icon(
                         Icons.dangerous_outlined,
-                        size: 35,
+                        size: 35.sp,
                         color: Colors.black54,
                       ),
                     ),
@@ -69,19 +70,19 @@ class _WelcomePageState extends State<WelcomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(
-                        height: 120,
+                       SizedBox(
+                        height: 120.h,
                       ),
                       Image.asset('images/welcoom.png'),
-                      const SizedBox(
-                        height: 33,
+                       SizedBox(
+                        height: 33.h,
                       ),
                       Center(
                         child: Text(
                           AppLocalizations.of(context)!.welcome,
-                          style: const TextStyle(
+                          style:  TextStyle(
                             color: Colors.black26,
-                            fontSize: 15,
+                            fontSize: 15.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

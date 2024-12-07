@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class Dialogfilter extends StatefulWidget {
   const Dialogfilter({super.key});
@@ -89,7 +91,7 @@ class _DialogfilterState extends State<Dialogfilter> {
           },
         );
       },
-      icon: const Icon(Icons.filter_list_outlined, color: Colors.white, size: 30),
+      icon:  Icon(Icons.filter_list_outlined, color: Colors.white, size: 30.sp),
     );
   }
   }
@@ -108,7 +110,7 @@ class SecondDialog {
 
           builder: (BuildContext context, StateSetter setState) {
             return AlertDialog(
-              title: Text(AppLocalizations.of(context)!.selectType,style: const TextStyle(fontSize: 25),),
+              title: Text(AppLocalizations.of(context)!.selectType,style:  TextStyle(fontSize: 25.sp),),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -140,7 +142,7 @@ class SecondDialog {
 
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10,left: 100,top: 10),
-                    child: Text(AppLocalizations.of(context)!.selectCategory,style: const TextStyle(fontSize: 25),),
+                    child: Text(AppLocalizations.of(context)!.selectCategory,style:  TextStyle(fontSize: 25.sp),),
                   ),
                   CheckboxListTile(
                     title: Text(AppLocalizations.of(context)!.horror),

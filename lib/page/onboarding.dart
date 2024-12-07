@@ -2,9 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:this_books/main.dart';
 import 'package:this_books/page/login_page.dart';
 import 'package:this_books/shared/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -77,28 +80,28 @@ class _OnBoardingState extends State<OnBoarding> {
                       children: [
                         SvgPicture.asset(
                           controller.items[currentIndex].image,
-                          height: 300,
+                          height: 300.h,
                         ),
                         Align(
                           alignment: Alignment.center,
                           child: Text(
                             controller.items[currentIndex].title,
-                            style: const TextStyle(
+                            style:  TextStyle(
                               color: Color(0xff283E50),
-                              fontSize: 20,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 20,
+                         SizedBox(
+                          height: 20.h,
                         ),
                         Text(
                           controller.items[currentIndex].description,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: Color.fromARGB(255, 67, 101, 129),
+                          style:  TextStyle(
+                            fontSize: 15.sp,
+                            color:const Color.fromARGB(255, 67, 101, 129),
                           ),
                         ),
                       ],
@@ -119,7 +122,7 @@ class _OnBoardingState extends State<OnBoarding> {
                         ? const Color(0xff283E50)
                         : Colors.grey,
                   ),
-                  height: 7,
+                  height: 7.h,
                   width: currentIndex == index ? 30 : 7,
                   duration: const Duration(milliseconds: 700),
                 ),
@@ -128,7 +131,7 @@ class _OnBoardingState extends State<OnBoarding> {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 20),
               width: MediaQuery.of(context).size.width * .9,
-              height: 55,
+              height: 55.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: const Color(0xff283E50),

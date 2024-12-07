@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:this_books/page/edit_profile_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -28,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.navigate_before, color: Colors.white, size: 35),
+            icon:  Icon(Icons.navigate_before, color: Colors.white, size: 35.sp),
           ),
         ),
       ),
@@ -37,13 +39,13 @@ class _ProfilePageState extends State<ProfilePage> {
           CustomPaint(
             painter: HeaderCurvedContainer(),
             child: Container(
-              height: 150,
-              child: const Center(
+              height: 150.h,
+              child:  Center(
                 child: Text(
                   'Profile',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 24.0,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -66,7 +68,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      const SizedBox(height: 120),
+                       SizedBox(height: 120.h),
                       Stack(
                         children: [
                           const CircleAvatar(
@@ -91,11 +93,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 100),
+                       SizedBox(height: 100.h),
                       itemProfile(AppLocalizations.of(context)!.name, userData['name'], CupertinoIcons.person),
-                      const SizedBox(height: 10),
+                       SizedBox(height: 10.h),
                       itemProfile(AppLocalizations.of(context)!.usarName, userData['username'], CupertinoIcons.tag),
-                      const SizedBox(height: 10),
+                       SizedBox(height: 10.h),
 
                     ],
                   ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:this_books/shared/onboarding_info.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 var decorationTextFiled = InputDecoration(
   // iconColor: Colors.grey,
@@ -11,37 +12,37 @@ var decorationTextFiled = InputDecoration(
   ),
   enabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
-    borderSide: const BorderSide(
+    borderSide:  BorderSide(
       color: Colors.grey,
-      width: 0.5,
+      width: 0.5.w,
     ),
   ),
   errorBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
-    borderSide: const BorderSide(
+    borderSide:  BorderSide(
       color: Colors.red,
-      width: 0.5,
+      width: 0.5.w,
     ),
   ),
   disabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
-    borderSide: const BorderSide(
+    borderSide:  BorderSide(
       color: Colors.blue,
-      width: 0.5,
+      width: 0.5.w,
     ),
   ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
-    borderSide: const BorderSide(
+    borderSide:  BorderSide(
       color: Colors.blue,
-      width: 0.5,
+      width: 0.5.w,
     ),
   ),
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
-    borderSide: const BorderSide(
+    borderSide:  BorderSide(
       color: Colors.green,
-      width: 2,
+      width: 2.w,
     ),
   ),
   filled: true,
@@ -72,13 +73,13 @@ class SettingOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Container(
-        height: 35,
-        width: 35,
+        height: 35.h,
+        width: 35.w,
         decoration: BoxDecoration(
           color: iconBackgroundColor,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(5),
-          border: Border.all(width: 1, color: const Color(0xf3f3f3)),
+          border: Border.all(width: 1.w, color: const Color(0xf3f3f3)),
         ),
         child: Icon(icon, color: iconColor),
       ),

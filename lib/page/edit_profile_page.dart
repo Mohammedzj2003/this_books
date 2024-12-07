@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class EditProfilePage extends StatelessWidget {
   final String title;
@@ -30,10 +32,10 @@ class EditProfilePage extends StatelessWidget {
                 hintText: subtitle,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20.h),
             SizedBox(
               width: double.infinity,
-              height: 45,
+              height: 45.h,
               child: ElevatedButton(
                 onPressed: () async {
                   // Handle save action
