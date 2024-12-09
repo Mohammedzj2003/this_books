@@ -9,14 +9,9 @@ import 'package:this_books/page/splash_screen.dart';
 import 'package:this_books/shared/settings_provider.dart';
 import 'package:this_books/shared/themes.dart';
 
-
-
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
   runApp(
     ChangeNotifierProvider(
       create: (context) => SettingsProvider(),
@@ -32,13 +27,12 @@ void main() async {
   );
 }
 
-
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   static void setLocale(BuildContext context, Locale newLocale) {
-    _MyAppState state = context.findAncestorStateOfType<_MyAppState>()!;
-    state.setLocale(newLocale);
+    final _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(newLocale);
   }
 
   @override
@@ -62,17 +56,19 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> _loadLocale() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String languageCode = prefs.getString('language') ?? 'ar';
-    setState(() {
-      _locale = Locale(languageCode);
-    });
+    String? languageCode = prefs.getString('language');
+    if (languageCode != null) {
+      setState(() {
+        _locale = Locale(languageCode);
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final settingsProvider = Provider.of<SettingsProvider>(context);
 
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

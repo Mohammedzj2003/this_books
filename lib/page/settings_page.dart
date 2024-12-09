@@ -68,7 +68,7 @@ class _SettingPageState extends State<SettingPage> {
               child: Column(
                 children: [
                    SizedBox(
-                    height: 18.h,
+                    height: 25.h,
                   ),
                   SettingOption(
                     icon: Icons.person,
@@ -86,30 +86,33 @@ class _SettingPageState extends State<SettingPage> {
                       );
                     },
                   ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
                   SettingOption(
                     icon: Icons.language,
                     trailing: Text(
                       AppLocalizations.of(context)!.en,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
                     ),
                     title: AppLocalizations.of(context)!.language,
                     textColor: Theme.of(context).colorScheme.onPrimary,
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.cyan,
                     onTap: () async {
-                      SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                      String currentLanguage =
-                          prefs.getString('language') ?? 'ar';
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      String currentLanguage = prefs.getString('language') ?? 'ar';
+                      String newLanguage = currentLanguage == 'ar' ? 'en' : 'ar';
 
-                      String newLanguage =
-                      currentLanguage == 'ar' ? 'en' : 'ar';
                       await prefs.setString('language', newLanguage);
 
                       MyApp.setLocale(context, Locale(newLanguage));
                     },
                   ),
                    SizedBox(
-                    height: 8.h,
+                    height: 20.h,
                   ),
                   SettingOption(
                     icon: Icons.nightlight_round,
@@ -123,9 +126,7 @@ class _SettingPageState extends State<SettingPage> {
                     iconBackgroundColor: Colors.black54,
                     onTap: () {},
                   ),
-                   SizedBox(
-                    height: 8.h,
-                  ),
+
                 ],
               ),
             ),
@@ -141,7 +142,7 @@ class _SettingPageState extends State<SettingPage> {
               child: Column(
                 children: [
                    SizedBox(
-                    height: 20.h,
+                    height: 25.h,
                   ),
                   SettingOption(
                     icon: Icons.refresh,
@@ -160,7 +161,7 @@ class _SettingPageState extends State<SettingPage> {
                     },
                   ),
                    SizedBox(
-                    height: 10.h,
+                    height: 20.h,
                   ),
                   SettingOption(
                     icon: Icons.logout,
@@ -170,16 +171,12 @@ class _SettingPageState extends State<SettingPage> {
                     iconColor: Colors.white,
                     iconBackgroundColor: Colors.red,
                     onTap: () async {
-                      // تسجيل الخروج من FirebaseAuth
                       await FirebaseAuth.instance.signOut();
 
-                      // إزالة بيانات تسجيل الدخول من SharedPreferences
                       SharedPreferences prefs =
                       await SharedPreferences.getInstance();
                       await prefs.remove('email');
                       await prefs.remove('password');
-
-                      // الانتقال إلى صفحة تسجيل الدخول
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

@@ -4,6 +4,7 @@ import 'package:this_books/page/home_page.dart';
 import 'package:this_books/page/onboarding.dart';
 import 'package:this_books/page/login_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:this_books/page/settings_page.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -26,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     final hasSeenOnBoarding = prefs.getBool('hasSeenOnBoarding') ?? false;
 
-    final isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+    final isLoggedIn = prefs.getBool('isLoggedIn') ?? true;
     await Future.delayed(const Duration(seconds: 5));
 
     if (!hasSeenOnBoarding) {
@@ -37,12 +38,12 @@ class _SplashScreenState extends State<SplashScreen> {
     } else if (!isLoggedIn) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const LoginPage()),
+        MaterialPageRoute(builder: (context) => const SettingPage()),
       );
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(builder: (context) => const SettingPage()),
       );
     }
   }

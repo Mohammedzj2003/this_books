@@ -103,7 +103,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       SizedBox(height: 100.h),
                       itemProfile(AppLocalizations.of(context)!.name, userData['name'], CupertinoIcons.person),
                       SizedBox(height: 10.h),
-                      itemProfile(AppLocalizations.of(context)!.usarName, userData['username'], CupertinoIcons.tag),
+                      itemProfile(AppLocalizations.of(context)!.userName, userData['username'], CupertinoIcons.tag),
                       SizedBox(height: 10.h),
                     ],
                   ),

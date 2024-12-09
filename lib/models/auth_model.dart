@@ -1,13 +1,10 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:this_books/page/home_page.dart';
 import 'package:this_books/page/login_page.dart';
-import 'package:this_books/page/notifications_page.dart';
 import 'package:this_books/page/welcome_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -24,7 +21,7 @@ class AuthPage {
       TextEditingController emailController,
       TextEditingController passwordController) async {
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+       await _auth.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
@@ -135,7 +132,6 @@ class AuthPage {
           action: SnackBarAction(
             label: 'Undo',
             onPressed: () {
-              // Some code to undo the change.
             },
           ),
         ),
@@ -165,12 +161,14 @@ class AuthPage {
   }
 }
 
-class AuthController extends GetxController {
+class AuthController  {
+  late BuildContext context;
   RxBool isLoading = false.obs;
 
   //Firebase Sign In gmail
   void loginWithEmail() async {
     isLoading.value = true;
+
 
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -182,7 +180,12 @@ class AuthController extends GetxController {
       );
 
       await FirebaseAuth.instance.signInWithCredential(credential);
-      Get.offAll(HomePage());
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => const LoginPage(),
+        ),
+      );
     } catch (ex) {
       print(ex);
     }
