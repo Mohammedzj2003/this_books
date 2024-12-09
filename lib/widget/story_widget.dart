@@ -28,14 +28,23 @@ class StoryWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(
-            storyList[index].imageURL,
-            fit: BoxFit.contain,
+          Container(
+            height: 110.h,
+            width: 110.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.grey[300],
+            ),
+            clipBehavior: Clip.hardEdge,
+            child: Image.asset(
+              storyList[index].imageURL,
+              fit: BoxFit.cover,
+            ),
           ),
-           SizedBox(height: 5.h),
+          SizedBox(height: 10.h),
           Text(
             storyList[index].plantName,
-            style:  TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18.sp,
               color: Theme.of(context).textSelectionTheme.cursorColor,
@@ -46,11 +55,12 @@ class StoryWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-             const Icon(Icons.star,color: Colors.amber,),
-              Text(storyList[index].rating.toString(),
-                style:  TextStyle(
-                    color: Theme.of(context).textSelectionTheme.cursorColor,
-                    fontSize: 17.sp,
+              const Icon(Icons.star, color: Colors.amber),
+              Text(
+                storyList[index].rating.toString(),
+                style: TextStyle(
+                  color: Theme.of(context).textSelectionTheme.cursorColor,
+                  fontSize: 17.sp,
                 ),
                 maxLines: 1,
               ),

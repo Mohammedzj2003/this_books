@@ -1,10 +1,12 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:this_books/models/storys.dart';
+import 'package:this_books/page/notifications_page.dart';
 import 'package:this_books/page/profile_page.dart';
 import 'package:this_books/widget/dialogFilter.dart';
 import 'package:this_books/widget/movingCard_screen.dart';
@@ -18,6 +20,22 @@ class HomePage extends StatefulWidget {
 
   @override
   State<HomePage> createState() => _HomePageState();
+}
+
+Future<void> sendNotification() async {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  try {
+    // إرسال إشعار جديد إلى Firebase
+    await firestore.collection('notifications').add({
+      'title': 'Welcome!',
+      'message': 'You have successfully logged in!',
+      'createdAt': Timestamp.now(),
+    });
+    print('Notification sent successfully!');
+  } catch (e) {
+    print('Error sending notification: $e');
+  }
 }
 
 class _HomePageState extends State<HomePage> {
@@ -47,6 +65,22 @@ class _HomePageState extends State<HomePage> {
           }
         ),
         actions: [
+          IconButton(
+            onPressed: () {
+              sendNotification();
+              Navigator.push(
+                context,
+                PageTransition(
+                  child:  NotificationsPage(),
+                  type: PageTransitionType.rightToLeft,
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.notifications_active,
+              color: Colors.orangeAccent,
+            ),
+          ),
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -68,6 +102,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+
         ],
       ),
       body: SingleChildScrollView(
@@ -92,58 +127,63 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                          ),
-                          width: 220.w,
-                          decoration: BoxDecoration(
-                            color:Theme.of(context).colorScheme.inversePrimary,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0,
+                              ),
+                              width: 240.w,
+                              decoration: BoxDecoration(
+                                color:Theme.of(context).colorScheme.inversePrimary,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
 
-                          //Search
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.search,
-                                color: Theme.of(context).textSelectionTheme.cursorColor
-                              ),
-                              SizedBox(
-                                width: 5.h,
-                              ),
-                              Expanded(
-                                child: TextField(
-                                  showCursor: false,
-                                  decoration: InputDecoration(
-                                    hintText:
-                                        AppLocalizations.of(context)!.search,
-                                    border: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
+                              //Search
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.search,
+                                    color: Theme.of(context).textSelectionTheme.cursorColor
                                   ),
-                                ),
+                                  SizedBox(
+                                    width: 5.h,
+                                  ),
+                                  Expanded(
+                                    child: TextField(
+                                      showCursor: false,
+                                      decoration: InputDecoration(
+                                        hintText:
+                                            AppLocalizations.of(context)!.search,
+                                        border: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                        const Dialogfilter(),
+                          const Dialogfilter(),
 
-                        IconButton(
-                          onPressed: () {
-                            SecondDialog.showSecondDialog(context);
-                          },
-                          icon:  Icon(
-                            Icons.filter_alt_outlined,
-                            color: Colors.white,
-                            size: 30.sp,
+                          IconButton(
+                            onPressed: () {
+                              SecondDialog.showSecondDialog(context);
+                            },
+                            icon:  Icon(
+                              Icons.filter_alt_outlined,
+                              color: Colors.white,
+                              size: 30.sp,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -181,23 +221,26 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-      GridView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemCount: _storyList.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          mainAxisExtent: 210,
-          crossAxisSpacing: 5,
-          mainAxisSpacing: 6,
+      Padding(
+        padding: const EdgeInsets.only(left: 5,right: 5),
+        child: GridView.builder(
+          shrinkWrap: true,
+          primary: false,
+          itemCount: _storyList.length,
+          gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            mainAxisExtent: 190.sp,
+            crossAxisSpacing: 5.sp,
+            mainAxisSpacing: 5.sp,
+          ),
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                StoryWidget(index: index, storyList: _storyList),
+              ],
+            );
+          },
         ),
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              StoryWidget(index: index, storyList: _storyList),
-            ],
-          );
-        },
       ),
       ],
         ),

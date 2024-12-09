@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                  SizedBox(
-                  height: 200.h,
+                  height: 100.h,
                 ),
                 Row(
                   children: [
@@ -143,7 +143,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                  SizedBox(
-                  height: 33.h,
+                  height: 15.h,
                 ),
                 SizedBox(
                   width: double.infinity,

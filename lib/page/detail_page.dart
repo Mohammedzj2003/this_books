@@ -83,29 +83,38 @@ class _DetailPageState extends State<DetailPage> {
                    SizedBox(
                     height: 20.h,
                   ),
-                  Row(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(15.0),
-                        child: Image.asset(
-                          currentStory.imageURL,
-                          fit: BoxFit.cover,
-                          height: 150,
-                          width: 150,
+                  SizedBox(
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        // صورة القصة
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.asset(
+                            currentStory.imageURL,
+                            fit: BoxFit.cover,
+                            height: 150,
+                            width: 150,
+                          ),
                         ),
-                      ),
-                       SizedBox(
-                        width: 10.w,
-                      ),
-                      Text(
-                        currentStory.plantName,
-                        style:  TextStyle(
-                          color: Colors.white, // لون النص
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30.0.sp,
+                        SizedBox(
+                          width: 10.w,
                         ),
-                      ),
-                    ],
+                        // نص اسم القصة مع الالتفاف
+                        Expanded(
+                          child: Text(
+                            currentStory.plantName,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0.sp,
+                            ),
+                            maxLines: 3, // السماح بخطين كحد أقصى
+                            overflow: TextOverflow.ellipsis, // تقطيع النص الزائد بنقاط
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -121,108 +130,111 @@ class _DetailPageState extends State<DetailPage> {
               endIndent: 16,
             ),
             //star
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                     SizedBox(
-                      height: 10.h,
-                    ),
-                     Icon(
-                      Icons.star,
-                      size: 30.0.sp,
-                      color: Colors.amber,
-                    ),
-                     SizedBox(
-                      height: 12.h,
-                    ),
-                    Text(
-                      currentStory.rating.toString(),
-                      style:  TextStyle(
-                        fontSize: 20.0.sp,
+            SizedBox(
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                       SizedBox(
+                        height: 10.h,
                       ),
-                    ),
-                  ],
-                ),
-                 SizedBox(
-                  width: 20.w,
-                ),
-                Column(
-                  children: [
-                    IconButton(
+                       Icon(
+                        Icons.star,
+                        size: 30.0.sp,
+                        color: Colors.amber,
+                      ),
+                       SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        currentStory.rating.toString(),
+                        style:  TextStyle(
+                          fontSize: 20.0.sp,
+                        ),
+                      ),
+                    ],
+                  ),
+                   SizedBox(
+                    width: 20.w,
+                  ),
+                  Column(
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            setState(() {
+                              bool isFavorited =
+                                  toggleIsFavorated(currentStory.isFavorated);
+                              currentStory.isFavorated = isFavorited;
+                            });
+                          },
+                          icon: Icon(
+                            size: 30.0.sp,
+                            currentStory.isFavorated == true
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: Colors.red,
+                          )),
+                      Text(
+                        AppLocalizations.of(context)!.favorite,
+                        style:  TextStyle(fontSize: 20.sp),
+                      ),
+                    ],
+                  ),
+                   SizedBox(
+                    width: 20.w,
+                  ),
+                  Column(
+                    children: [
+                      IconButton(
+                        icon:  Icon(
+                          Icons.stars_outlined,
+                          size: 30.0.sp,
+                          color: Theme.of(context).textSelectionTheme.cursorColor,
+                        ),
+                        onPressed: () {
+                          thirdDialog.showRatingDialog(context);
+                        },
+                      ),
+                      Text(
+                        AppLocalizations.of(context)!.rating,
+                        style:  TextStyle(
+                          fontSize: 20.0.sp,
+                        ),
+                      ),
+                    ],
+                  ),
+                   SizedBox(
+                    width: 20.w,
+                  ),
+                  Column(
+                    children: [
+                      IconButton(
                         onPressed: () {
                           setState(() {
-                            bool isFavorited =
-                                toggleIsFavorated(currentStory.isFavorated);
-                            currentStory.isFavorated = isFavorited;
+                            bool isList = toggleIsFavorated(currentStory.isList);
+                            currentStory.isList = isList;
                           });
                         },
                         icon: Icon(
                           size: 30.0.sp,
-                          currentStory.isFavorated == true
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                          color: Colors.red,
-                        )),
-                    Text(
-                      AppLocalizations.of(context)!.favorite,
-                      style:  TextStyle(fontSize: 20.sp),
-                    ),
-                  ],
-                ),
-                 SizedBox(
-                  width: 20.w,
-                ),
-                Column(
-                  children: [
-                    IconButton(
-                      icon:  Icon(
-                        Icons.stars_outlined,
-                        size: 30.0.sp,
-                        color: Theme.of(context).textSelectionTheme.cursorColor,
+                          currentStory.isList == true
+                              ? Icons.add_box_outlined
+                              : Icons.verified,
+                          color: Colors.blueAccent,
+                        ),
                       ),
-                      onPressed: () {
-                        thirdDialog.showRatingDialog(context);
-                      },
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.rating,
-                      style:  TextStyle(
-                        fontSize: 20.0.sp,
+                      Text(
+                        AppLocalizations.of(context)!.addList,
+                        style:  TextStyle(
+                          fontSize: 20.0.sp,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                 SizedBox(
-                  width: 20.w,
-                ),
-                Column(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          bool isList = toggleIsFavorated(currentStory.isList);
-                          currentStory.isList = isList;
-                        });
-                      },
-                      icon: Icon(
-                        size: 30.0.sp,
-                        currentStory.isList == true
-                            ? Icons.add_box_outlined
-                            : Icons.verified,
-                        color: Colors.blueAccent,
-                      ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.addList,
-                      style:  TextStyle(
-                        fontSize: 20.0.sp,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
              SizedBox(
               height: 50.h,

@@ -6,7 +6,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:this_books/page/edit_profile_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -21,6 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primary ,
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Color(0xff283E50),
@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon:  Icon(Icons.navigate_before, color: Colors.white, size: 35.sp),
+            icon: Icon(Icons.navigate_before, color: Colors.white, size: 35.sp),
           ),
         ),
       ),
@@ -39,8 +39,8 @@ class _ProfilePageState extends State<ProfilePage> {
           CustomPaint(
             painter: HeaderCurvedContainer(),
             child: Container(
-              height: 150.h,
-              child:  Center(
+              height: 100.h,
+              child: Center(
                 child: Text(
                   'Profile',
                   style: TextStyle(
@@ -68,12 +68,20 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
-                       SizedBox(height: 120.h),
+                      SizedBox(height: 80.h),
                       Stack(
                         children: [
-                          const CircleAvatar(
-                            radius: 70,
-                            backgroundImage: const AssetImage('images/logo.png'),
+                          Container(
+                            width: 100.w,
+                            height: 100.h,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Theme.of(context).colorScheme.primary,
+                              image: DecorationImage(
+                                image: AssetImage('images/logo.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                           Positioned(
                             bottom: 0,
@@ -86,19 +94,17 @@ class _ProfilePageState extends State<ProfilePage> {
                               child: IconButton(
                                 icon: const Icon(Icons.edit, color: Colors.white),
                                 onPressed: () {
-                                  // Handle edit action
                                 },
                               ),
                             ),
                           ),
                         ],
                       ),
-                       SizedBox(height: 100.h),
+                      SizedBox(height: 100.h),
                       itemProfile(AppLocalizations.of(context)!.name, userData['name'], CupertinoIcons.person),
-                       SizedBox(height: 10.h),
+                      SizedBox(height: 10.h),
                       itemProfile(AppLocalizations.of(context)!.usarName, userData['username'], CupertinoIcons.tag),
-                       SizedBox(height: 10.h),
-
+                      SizedBox(height: 10.h),
                     ],
                   ),
                 ),
@@ -114,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
   itemProfile(String title, String subtitle, IconData iconData) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary,
+        color: Theme.of(context).colorScheme.inversePrimary,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(

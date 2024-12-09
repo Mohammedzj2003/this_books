@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,13 +7,18 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:this_books/page/home_page.dart';
 import 'package:this_books/page/login_page.dart';
+import 'package:this_books/page/notifications_page.dart';
 import 'package:this_books/page/welcome_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+final navigatorKey = GlobalKey<NavigatorState>();
+
 
 class AuthPage {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  //Firebase Sign In
   Future<void> signIn(
       BuildContext context,
       TextEditingController emailController,
@@ -44,6 +47,7 @@ class AuthPage {
     }
   }
 
+  //Firebase Register
   Future<void> register(
       BuildContext context,
       TextEditingController emailController,
@@ -145,6 +149,8 @@ class AuthPage {
     }
   }
 
+
+  // Firebase Sign out
   Future<void> signout({
     required BuildContext context,
   }) async {
@@ -162,6 +168,7 @@ class AuthPage {
 class AuthController extends GetxController {
   RxBool isLoading = false.obs;
 
+  //Firebase Sign In gmail
   void loginWithEmail() async {
     isLoading.value = true;
 
@@ -181,30 +188,6 @@ class AuthController extends GetxController {
     }
 
     isLoading.value = false;
-  }
-  Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-    print('Handling a background message: ${message.messageId}');
-  }
-
-  Future<void> initNotifications() async {
-    FirebaseMessaging messaging = FirebaseMessaging.instance;
-
-    // إعداد المعالج للإشعارات الخلفية
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-    // طلب إذن الإشعارات (للإصدارات الحديثة)
-    NotificationSettings settings = await messaging.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      sound: true,
-    );
-
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      print('User granted permission');
-    } else {
-      print('User declined or has not granted permission');
-    }
   }
 }
 

@@ -26,10 +26,10 @@ class Story {
       storyId: 0,
       price: 22,
       category: 'Romantec',
-      plantName: 'jomanaa',
+      plantName: 'جومانة',
       rating: 4.5,
       isList: true,
-      imageURL: 'images/storyOne.png',
+      imageURL: 'images/jomana.jpg',
       isFavorated: true,
       decription:
       'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
@@ -39,9 +39,9 @@ class Story {
       storyId: 1,
       price: 11,
       category: 'Outdoor',
-      plantName: 'Philodendron',
+      plantName: 'ابابيل',
       rating: 4.8,
-      imageURL: 'images/storyOne.png',
+      imageURL: 'images/ababielOne.jpg',
       isFavorated: false,
       isList: false,
       decription:

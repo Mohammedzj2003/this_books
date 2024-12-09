@@ -55,7 +55,7 @@ class _ResetPageState extends State<ResetPage> {
 
 
              SizedBox(
-              height: 50.h,
+              height: 30.h,
             ),
 
                     Row(
@@ -63,7 +63,7 @@ class _ResetPageState extends State<ResetPage> {
                         Text(AppLocalizations.of(context)!.resetApp,
 
                           style:  TextStyle(
-                            fontSize: 35.sp,
+                            fontSize: 25.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -103,7 +103,7 @@ class _ResetPageState extends State<ResetPage> {
                   });
                 },),
                     SizedBox(
-                    height: 10.h,
+                    height: 20.h,
                   ),
                   SettingOption(
                     icon: Icons.share,
@@ -118,7 +118,7 @@ class _ResetPageState extends State<ResetPage> {
 
                   ),
                    SizedBox(
-                    height: 10.h,
+                    height: 20.h,
                   ),
                   SettingOption(
                     icon: Icons.error_outline,

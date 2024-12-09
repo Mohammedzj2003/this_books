@@ -5,20 +5,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:this_books/models/auth_model.dart';
 import 'package:this_books/page/splash_screen.dart';
 import 'package:this_books/shared/settings_provider.dart';
 import 'package:this_books/shared/themes.dart';
 
+
+
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await AuthController().initNotifications();
+
   runApp(
     ChangeNotifierProvider(
       create: (context) => SettingsProvider(),
       child: ScreenUtilInit(
-        designSize: const Size(360, 690), // حجم التصميم الأساسي
+        designSize: const Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {

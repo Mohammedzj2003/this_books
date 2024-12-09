@@ -38,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               children: [
                  SizedBox(
-                  height: 150.h,
+                  height: 100.h,
                 ),
                 Row(
                   children: [
