@@ -49,13 +49,12 @@ dependencies:
   firebase_core: ^3.8.0
   firebase_auth: ^5.3.3
   cloud_firestore: ^5.5.0
-  shared_preferences: ^2.3.3
+  shared_preferences: ^2.3.4
   provider: ^6.1.2
   google_sign_in: ^6.2.2
   fluttertoast: ^8.2.8
   firebase_messaging: ^15.1.6
   flutter_screenutil: ^5.7.0
-
 
 
 dev_dependencies:

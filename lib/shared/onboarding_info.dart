@@ -10,3 +10,4 @@ class OnboardingInfo{
     required this.description,
     required this.image});
 }
+

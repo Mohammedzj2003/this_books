@@ -100,8 +100,8 @@ class _DialogfilterState extends State<Dialogfilter> {
 //SecondDialog
 class SecondDialog {
   static void showSecondDialog(BuildContext context) {
-    List<String> _selectedCategories = [];
-    String _selectedType = 'Stories';
+    List<String> selectedCategories = [];
+    String selectedType = 'Stories';
 
     showDialog(
       context: context,
@@ -118,10 +118,10 @@ class SecondDialog {
 
                     title: Text(AppLocalizations.of(context)!.stories),
                     value: 'Stories',
-                    groupValue: _selectedType,
+                    groupValue: selectedType,
                     onChanged: (value) {
                       setState(() {
-                        _selectedType = value!;
+                        selectedType = value!;
                       });
                       Navigator.of(context).pop();
                       showSecondDialog(context);
@@ -130,10 +130,10 @@ class SecondDialog {
                   RadioListTile<String>(
                     title: Text(AppLocalizations.of(context)!.novels),
                     value: 'Novels',
-                    groupValue: _selectedType,
+                    groupValue: selectedType,
                     onChanged: (value) {
                       setState(() {
-                        _selectedType = value!;
+                        selectedType = value!;
                       });
                       Navigator.of(context).pop();
                       showSecondDialog(context);
@@ -146,52 +146,52 @@ class SecondDialog {
                   ),
                   CheckboxListTile(
                     title: Text(AppLocalizations.of(context)!.horror),
-                    value: _selectedCategories.contains('Horror'),
+                    value: selectedCategories.contains('Horror'),
                     onChanged: (bool? value) {
                       setState(() {
                         if (value == true) {
-                          _selectedCategories.add('Horror');
+                          selectedCategories.add('Horror');
                         } else {
-                          _selectedCategories.remove('Horror');
+                          selectedCategories.remove('Horror');
                         }
                       });
                     },
                   ),
                   CheckboxListTile(
                     title: Text(AppLocalizations.of(context)!.romance),
-                    value: _selectedCategories.contains('Romance'),
+                    value: selectedCategories.contains('Romance'),
                     onChanged: (bool? value) {
                       setState(() {
                         if (value == true) {
-                          _selectedCategories.add('Romance');
+                          selectedCategories.add('Romance');
                         } else {
-                          _selectedCategories.remove('Romance');
+                          selectedCategories.remove('Romance');
                         }
                       });
                     },
                   ),
                   CheckboxListTile(
                     title: Text(AppLocalizations.of(context)!.children),
-                    value: _selectedCategories.contains('Children'),
+                    value: selectedCategories.contains('Children'),
                     onChanged: (bool? value) {
                       setState(() {
                         if (value == true) {
-                          _selectedCategories.add('Children');
+                          selectedCategories.add('Children');
                         } else {
-                          _selectedCategories.remove('Children');
+                          selectedCategories.remove('Children');
                         }
                       });
                     },
                   ),
                   CheckboxListTile(
                     title: Text(AppLocalizations.of(context)!.adventure),
-                    value: _selectedCategories.contains('Adventure'),
+                    value: selectedCategories.contains('Adventure'),
                     onChanged: (bool? value) {
                       setState(() {
                         if (value == true) {
-                          _selectedCategories.add('Adventure');
+                          selectedCategories.add('Adventure');
                         } else {
-                          _selectedCategories.remove('Adventure');
+                          selectedCategories.remove('Adventure');
                         }
                       });
                     },

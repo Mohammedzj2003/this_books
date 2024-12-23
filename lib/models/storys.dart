@@ -52,9 +52,9 @@ class Story {
       storyId: 2,
       price: 18,
       category: 'Indoor',
-      plantName: 'Beach Daisy',
+      plantName: 'آرسيس',
       rating: 4.7,
-      imageURL: 'images/storyOne.png',
+      imageURL: 'images/arses.jpg',
       isFavorated: false,
       isList: false,
       decription:

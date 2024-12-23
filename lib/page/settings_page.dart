@@ -13,8 +13,6 @@ import 'package:this_books/shared/settings_provider.dart';
 import 'package:this_books/widget/navDrower_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
 
@@ -23,7 +21,6 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-
   @override
   Widget build(BuildContext context) {
     final settingsProvider = Provider.of<SettingsProvider>(context);
@@ -52,143 +49,143 @@ class _SettingPageState extends State<SettingPage> {
         ),
       ),
       backgroundColor: Theme.of(context).colorScheme.primary,
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-             SizedBox(
-              height: 100.h,
-            ),
-            Container(
-              height: 220.h,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.inversePrimary,
-                borderRadius: BorderRadius.circular(20),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 100.h,
               ),
-              child: Column(
-                children: [
-                   SizedBox(
-                    height: 25.h,
-                  ),
-                  SettingOption(
-                    icon: Icons.person,
-                    title: AppLocalizations.of(context)!.editProfile,
-                    trailing: const Icon(Icons.arrow_forward_ios),
-                    textColor: Theme.of(context).colorScheme.onPrimary,
-                    iconColor: Colors.white,
-                    iconBackgroundColor: Colors.green,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfilePage(),
+              Container(
+                height: 250.h,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 25.h,
+                    ),
+                    SettingOption(
+                      icon: Icons.person,
+                      title: AppLocalizations.of(context)!.editProfile,
+                      trailing: const Icon(Icons.arrow_forward_ios),
+                      textColor: Theme.of(context).colorScheme.onPrimary,
+                      iconColor: Colors.white,
+                      iconBackgroundColor: Colors.green,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfilePage(),
+                          ),
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    SettingOption(
+                      icon: Icons.language,
+                      trailing: Text(
+                        AppLocalizations.of(context)!.en,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimary,
                         ),
-                      );
-                    },
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  SettingOption(
-                    icon: Icons.language,
-                    trailing: Text(
-                      AppLocalizations.of(context)!.en,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onPrimary,
                       ),
+                      title: AppLocalizations.of(context)!.language,
+                      textColor: Theme.of(context).colorScheme.onPrimary,
+                      iconColor: Colors.white,
+                      iconBackgroundColor: Colors.cyan,
+                      onTap: () async {
+                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                        String currentLanguage = prefs.getString('language') ?? 'ar';
+                        String newLanguage = currentLanguage == 'ar' ? 'en' : 'ar';
+
+                        await prefs.setString('language', newLanguage);
+
+                        MyApp.setLocale(context, Locale(newLanguage));
+                      },
                     ),
-                    title: AppLocalizations.of(context)!.language,
-                    textColor: Theme.of(context).colorScheme.onPrimary,
-                    iconColor: Colors.white,
-                    iconBackgroundColor: Colors.cyan,
-                    onTap: () async {
-                      SharedPreferences prefs = await SharedPreferences.getInstance();
-                      String currentLanguage = prefs.getString('language') ?? 'ar';
-                      String newLanguage = currentLanguage == 'ar' ? 'en' : 'ar';
-
-                      await prefs.setString('language', newLanguage);
-
-                      MyApp.setLocale(context, Locale(newLanguage));
-                    },
-                  ),
-                   SizedBox(
-                    height: 20.h,
-                  ),
-                  SettingOption(
-                    icon: Icons.nightlight_round,
-                    title: AppLocalizations.of(context)!.darkMode,
-                    trailing: Switch(
-                      value: settingsProvider.isDarkMode,
-                      onChanged: settingsProvider.toggleTheme,
+                    SizedBox(
+                      height: 20.h,
                     ),
-                    textColor: Theme.of(context).colorScheme.onPrimary,
-                    iconColor: Colors.white,
-                    iconBackgroundColor: Colors.black54,
-                    onTap: () {},
-                  ),
+                    SettingOption(
+                      icon: Icons.nightlight_round,
+                      title: AppLocalizations.of(context)!.darkMode,
+                      trailing: Switch(
+                        value: settingsProvider.isDarkMode,
+                        onChanged: settingsProvider.toggleTheme,
+                      ),
+                      textColor: Theme.of(context).colorScheme.onPrimary,
+                      iconColor: Colors.white,
+                      iconBackgroundColor: Colors.black54,
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 50.h,
+              ),
+              Container(
+                height: 170.h,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 25.h,
+                    ),
+                    SettingOption(
+                      icon: Icons.refresh,
+                      title: AppLocalizations.of(context)!.resetApp,
+                      trailing: const Icon(Icons.arrow_forward_ios),
+                      textColor: Theme.of(context).colorScheme.onPrimary,
+                      iconColor: Colors.white,
+                      iconBackgroundColor: Colors.amber,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ResetPage(),
+                          ),
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    SettingOption(
+                      icon: Icons.logout,
+                      title: AppLocalizations.of(context)!.logout,
+                      trailing: const SizedBox.shrink(),
+                      textColor: Colors.red,
+                      iconColor: Colors.white,
+                      iconBackgroundColor: Colors.red,
+                      onTap: () async {
+                        await FirebaseAuth.instance.signOut();
 
-                ],
+                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                        await prefs.remove('email');
+                        await prefs.remove('password');
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
-             SizedBox(
-              height: 50.h,
-            ),
-            Container(
-              height: 150.h,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.inversePrimary,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                children: [
-                   SizedBox(
-                    height: 25.h,
-                  ),
-                  SettingOption(
-                    icon: Icons.refresh,
-                    title: AppLocalizations.of(context)!.resetApp,
-                    trailing: const Icon(Icons.arrow_forward_ios),
-                    textColor: Theme.of(context).colorScheme.onPrimary,
-                    iconColor: Colors.white,
-                    iconBackgroundColor: Colors.amber,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResetPage(),
-                        ),
-                      );
-                    },
-                  ),
-                   SizedBox(
-                    height: 20.h,
-                  ),
-                  SettingOption(
-                    icon: Icons.logout,
-                    title: AppLocalizations.of(context)!.logout,
-                    trailing: const SizedBox.shrink(),
-                    textColor: Colors.red,
-                    iconColor: Colors.white,
-                    iconBackgroundColor: Colors.red,
-                    onTap: () async {
-                      await FirebaseAuth.instance.signOut();
-
-                      SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                      await prefs.remove('email');
-                      await prefs.remove('password');
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

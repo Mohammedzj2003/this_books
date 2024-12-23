@@ -41,7 +41,7 @@ class StoryWidget extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(height: 10.h),
+          SizedBox(height: 5.h),
           Text(
             storyList[index].plantName,
             style: TextStyle(
@@ -60,7 +60,7 @@ class StoryWidget extends StatelessWidget {
                 storyList[index].rating.toString(),
                 style: TextStyle(
                   color: Theme.of(context).textSelectionTheme.cursorColor,
-                  fontSize: 17.sp,
+                  fontSize: 15.sp,
                 ),
                 maxLines: 1,
               ),
@@ -71,4 +71,3 @@ class StoryWidget extends StatelessWidget {
     );
   }
 }
-// flutterfire configure --android-app-id=com.example.my_books

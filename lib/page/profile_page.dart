@@ -20,7 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary ,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Color(0xff283E50),
@@ -57,10 +57,10 @@ class _ProfilePageState extends State<ProfilePage> {
             stream: _firestore.collection('users').doc(user!.uid).snapshots(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
               if (!snapshot.hasData || !snapshot.data!.exists) {
-                return Center(child: Text('No data available'));
+                return const Center(child: Text('No data available'));
               }
               var userData = snapshot.data!;
               return SingleChildScrollView(
@@ -77,7 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Theme.of(context).colorScheme.primary,
-                              image: DecorationImage(
+                              image: const DecorationImage(
                                 image: AssetImage('images/logo.png'),
                                 fit: BoxFit.cover,
                               ),
@@ -93,17 +93,20 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               child: IconButton(
                                 icon: const Icon(Icons.edit, color: Colors.white),
-                                onPressed: () {
-                                },
+                                onPressed: () {},
                               ),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 100.h),
+                      SizedBox(height: 50.h),
                       itemProfile(AppLocalizations.of(context)!.name, userData['name'], CupertinoIcons.person),
                       SizedBox(height: 10.h),
                       itemProfile(AppLocalizations.of(context)!.userName, userData['username'], CupertinoIcons.tag),
+                      SizedBox(height: 10.h),
+                      itemProfile(AppLocalizations.of(context)!.email, userData['email'], Icons.email_outlined),
+                      SizedBox(height: 10.h),
+                      itemProfile(AppLocalizations.of(context)!.password, '********', Icons.lock_outline),
                       SizedBox(height: 10.h),
                     ],
                   ),
@@ -111,7 +114,7 @@ class _ProfilePageState extends State<ProfilePage> {
               );
             },
           )
-              : Center(child: Text('User is not logged in')),
+              : const Center(child: Text('User is not logged in')),
         ],
       ),
     );
@@ -134,19 +137,17 @@ class _ProfilePageState extends State<ProfilePage> {
       child: ListTile(
         title: Text(
           title,
-          style: TextStyle(
-              color: Theme.of(context).textSelectionTheme.selectionColor),
+          style: TextStyle(color: Theme.of(context).textSelectionTheme.selectionColor),
         ),
         subtitle: Text(
           subtitle,
-          style: TextStyle(
-              color: Theme.of(context).textSelectionTheme.cursorColor),
+          style: TextStyle(color: Theme.of(context).textSelectionTheme.cursorColor),
         ),
         leading: Icon(
           iconData,
           color: Theme.of(context).textSelectionTheme.selectionColor,
         ),
-        trailing: Icon(Icons.arrow_forward),
+        trailing: const Icon(Icons.arrow_forward),
         tileColor: Theme.of(context).colorScheme.primary,
         onTap: () {
           Navigator.push(

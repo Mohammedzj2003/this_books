@@ -15,7 +15,7 @@ class _MovingCardScreenState extends State<MovingCardScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    List<Story> _storyList = Story.storyList;
+    List<Story> storyList = Story.storyList;
 
     bool toggleIsFavorated(bool isFavorited) {
       return !isFavorited;
@@ -24,7 +24,7 @@ class _MovingCardScreenState extends State<MovingCardScreen> {
     return SizedBox(
       height: size.height * .25.h,
       child: ListView.builder(
-          itemCount: _storyList.length,
+          itemCount: storyList.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
@@ -33,7 +33,7 @@ class _MovingCardScreenState extends State<MovingCardScreen> {
                     context,
                     PageTransition(
                         child: DetailPage(
-                          storyId: _storyList[index].storyId,
+                          storyId: storyList[index].storyId,
                         ),
                         type: PageTransitionType.bottomToTop));
               },
@@ -50,12 +50,12 @@ class _MovingCardScreenState extends State<MovingCardScreen> {
                         onPressed: () {
                           setState(() {
                             bool isFavorite = toggleIsFavorated(
-                                _storyList[index].isFavorated);
-                            _storyList[index].isFavorated = isFavorite;
+                                storyList[index].isFavorated);
+                            storyList[index].isFavorated = isFavorite;
                           });
                         },
                         icon: Icon(
-                          _storyList[index].isFavorated == true
+                          storyList[index].isFavorated == true
                               ? Icons.favorite
                               : Icons.favorite_border,
                           color: Colors.red,
@@ -70,7 +70,7 @@ class _MovingCardScreenState extends State<MovingCardScreen> {
                       alignment: Alignment.center,
                       decoration: const BoxDecoration(color: Colors.black54),
                       child: Text(
-                        _storyList[index].plantName,
+                        storyList[index].plantName,
                         style:  TextStyle(
                             shadows: const [
                               BoxShadow(
@@ -87,7 +87,7 @@ class _MovingCardScreenState extends State<MovingCardScreen> {
                       ),
                     ),
                     child: Image.asset(
-                      _storyList[index].imageURL,
+                      storyList[index].imageURL,
                       // width: 250,
                       // height: 250,
                       fit: BoxFit.cover,

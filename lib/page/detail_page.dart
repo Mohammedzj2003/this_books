@@ -5,6 +5,8 @@ import 'package:this_books/models/storys.dart';
 import 'package:this_books/page/chat_page.dart';
 import 'package:this_books/widget/dialogFilter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:this_books/widget/movingCard_screen.dart';
+import 'package:this_books/widget/story_widget.dart';
 
 
 class DetailPage extends StatefulWidget {
@@ -28,8 +30,8 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Story> _storyList = Story.storyList;
-    Story currentStory = _storyList[widget.storyId];
+    List<Story> storyList = Story.storyList;
+    Story currentStory = storyList[widget.storyId];
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -135,109 +137,121 @@ class _DetailPageState extends State<DetailPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Column(
-                    children: [
-                       SizedBox(
-                        height: 10.h,
-                      ),
-                       Icon(
-                        Icons.star,
-                        size: 30.0.sp,
-                        color: Colors.amber,
-                      ),
-                       SizedBox(
-                        height: 10.h,
-                      ),
-                      Text(
-                        currentStory.rating.toString(),
-                        style:  TextStyle(
-                          fontSize: 20.0.sp,
+                  Expanded(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 10.h,
                         ),
-                      ),
-                    ],
+                        Icon(
+                          Icons.star,
+                          size: 25.0.sp,
+                          color: Colors.amber,
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          currentStory.rating.toString(),
+                          style: TextStyle(
+                            fontSize: 15.0.sp,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                   SizedBox(
-                    width: 20.w,
+                  SizedBox(
+                    width: 5.w,
                   ),
-                  Column(
-                    children: [
-                      IconButton(
+                  Expanded(
+                    child: Column(
+                      children: [
+                        IconButton(
                           onPressed: () {
                             setState(() {
-                              bool isFavorited =
-                                  toggleIsFavorated(currentStory.isFavorated);
+                              bool isFavorited = toggleIsFavorated(currentStory.isFavorated);
                               currentStory.isFavorated = isFavorited;
                             });
                           },
                           icon: Icon(
-                            size: 30.0.sp,
+                            size: 25.0.sp,
                             currentStory.isFavorated == true
                                 ? Icons.favorite
                                 : Icons.favorite_border,
                             color: Colors.red,
-                          )),
-                      Text(
-                        AppLocalizations.of(context)!.favorite,
-                        style:  TextStyle(fontSize: 20.sp),
-                      ),
-                    ],
-                  ),
-                   SizedBox(
-                    width: 20.w,
-                  ),
-                  Column(
-                    children: [
-                      IconButton(
-                        icon:  Icon(
-                          Icons.stars_outlined,
-                          size: 30.0.sp,
-                          color: Theme.of(context).textSelectionTheme.cursorColor,
+                          ),
                         ),
-                        onPressed: () {
-                          thirdDialog.showRatingDialog(context);
-                        },
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.rating,
-                        style:  TextStyle(
-                          fontSize: 20.0.sp,
+                        Text(
+                          AppLocalizations.of(context)!.favorite,
+                          style: TextStyle(fontSize: 15.sp),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                   SizedBox(
-                    width: 20.w,
+                  SizedBox(
+                    width: 5.w,
                   ),
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            bool isList = toggleIsFavorated(currentStory.isList);
-                            currentStory.isList = isList;
-                          });
-                        },
-                        icon: Icon(
-                          size: 30.0.sp,
-                          currentStory.isList == true
-                              ? Icons.add_box_outlined
-                              : Icons.verified,
-                          color: Colors.blueAccent,
+                  Expanded(
+                    child: Column(
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.stars_outlined,
+                            size: 25.0.sp,
+                            color: Theme.of(context).textSelectionTheme.cursorColor,
+                          ),
+                          onPressed: () {
+                            thirdDialog.showRatingDialog(context);
+                          },
                         ),
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.addList,
-                        style:  TextStyle(
-                          fontSize: 20.0.sp,
+                        Text(
+                          AppLocalizations.of(context)!.rating,
+                          style: TextStyle(
+                            fontSize: 15.0.sp,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5.w,
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              bool isList = toggleIsFavorated(currentStory.isList);
+                              currentStory.isList = isList;
+                            });
+                          },
+                          icon: Icon(
+                            size: 25.0.sp,
+                            currentStory.isList == true
+                                ? Icons.add_box_outlined
+                                : Icons.verified,
+                            color: Colors.blueAccent,
+                          ),
+                        ),
+                        Text(
+                          AppLocalizations.of(context)!.addList,
+                          style: TextStyle(
+                            fontSize: 15.0.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(
+                    width: 10.w,
                   ),
                 ],
               ),
             ),
              SizedBox(
-              height: 50.h,
+              height: 40.h,
             ),
             //description
             Padding(
@@ -252,6 +266,8 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
             ),
+            MovingCardScreen(),
+
           ],
         ),
       ),

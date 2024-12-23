@@ -7,7 +7,6 @@ import 'package:this_books/shared/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
 
@@ -58,118 +57,117 @@ class _OnBoardingState extends State<OnBoarding> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            Expanded(
-              child: PageView.builder(
-                itemCount: controller.items.length,
-                controller: pageController,
-                onPageChanged: (value) {
-                  setState(() {
-                    currentIndex = value;
-                  });
-                  if (kDebugMode) {
-                    print(currentIndex);
-                  }
-                },
-                itemBuilder: (_, i) {
-                  return Padding(
-                    padding: const EdgeInsets.all(40),
-                    child: Column(
-                      children: [
-                        SvgPicture.asset(
-                          controller.items[currentIndex].image,
-                          height: 300.h,
-                        ),
-                        Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            controller.items[currentIndex].title,
-                            style:  TextStyle(
-                              color: Color(0xff283E50),
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.bold,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.8,
+                child: PageView.builder(
+                  itemCount: controller.items.length,
+                  controller: pageController,
+                  onPageChanged: (value) {
+                    setState(() {
+                      currentIndex = value;
+                    });
+                    if (kDebugMode) {
+                      print(currentIndex);
+                    }
+                  },
+                  itemBuilder: (_, i) {
+                    return SizedBox(
+                      child: Column(
+                        children: [
+                          SvgPicture.asset(
+                            controller.items[currentIndex].image,
+                            height: 300.h,
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              controller.items[currentIndex].title,
+                              style: TextStyle(
+                                color: const Color(0xff283E50),
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                        ),
-                         SizedBox(
-                          height: 20.h,
-                        ),
-                        Text(
-                          controller.items[currentIndex].description,
-                          textAlign: TextAlign.center,
-                          style:  TextStyle(
-                            fontSize: 15.sp,
-                            color:const Color.fromARGB(255, 67, 101, 129),
+                          SizedBox(
+                            height: 20.h,
                           ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                controller.items.length,
-                    (index) => AnimatedContainer(
-                  margin: const EdgeInsets.symmetric(horizontal: 2),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: currentIndex == index
-                        ? const Color(0xff283E50)
-                        : Colors.grey,
-                  ),
-                  height: 7.h,
-                  width: currentIndex == index ? 30 : 7,
-                  duration: const Duration(milliseconds: 700),
-                ),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 20),
-              width: MediaQuery.of(context).size.width * .9,
-              height: 55.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: const Color(0xff283E50),
-              ),
-              child: TextButton(
-                onPressed: () async {
-                  if (controller.items.length - 1 > currentIndex) {
-                    setState(() {
-                      currentIndex++;
-                      pageController.animateToPage(
-                        currentIndex,
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeIn,
-                      );
-                    });
-                  } else {
-                    await _setOnboardingSeen();
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LoginPage(),
+                          Text(
+                            controller.items[currentIndex].description,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15.sp,
+                              color: const Color.fromARGB(255, 67, 101, 129),
+                            ),
+                          ),
+                        ],
                       ),
                     );
-                  }
-                },
-                child: Text(
-                  currentIndex == controller.items.length - 1
-                      ? AppLocalizations.of(context)!.getStarted
-                      : AppLocalizations.of(context)!.next,
-                  style: const TextStyle(color: Colors.white),
+                  },
                 ),
               ),
-            ),
-          ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  controller.items.length,
+                      (index) => AnimatedContainer(
+                    margin: const EdgeInsets.symmetric(horizontal: 2),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: currentIndex == index
+                          ? const Color(0xff283E50)
+                          : Colors.grey,
+                    ),
+                    height: 7.h,
+                    width: currentIndex == index ? 30 : 7,
+                    duration: const Duration(milliseconds: 700),
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 20),
+                width: MediaQuery.of(context).size.width * .9,
+                height: 55.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: const Color(0xff283E50),
+                ),
+                child: TextButton(
+                  onPressed: () async {
+                    if (controller.items.length - 1 > currentIndex) {
+                      setState(() {
+                        currentIndex++;
+                        pageController.animateToPage(
+                          currentIndex,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        );
+                      });
+                    } else {
+                      await _setOnboardingSeen();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
+                    }
+                  },
+                  child: Text(
+                    currentIndex == controller.items.length - 1
+                        ? AppLocalizations.of(context)!.getStarted
+                        : AppLocalizations.of(context)!.next,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
-
-

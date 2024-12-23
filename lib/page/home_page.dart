@@ -41,7 +41,7 @@ Future<void> sendNotification() async {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    List<Story> _storyList = Story.storyList;
+    List<Story> storyList = Story.storyList;
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.push(
                 context,
                 PageTransition(
-                  child:  NotificationsPage(),
+                  child: const NotificationsPage(),
                   type: PageTransitionType.rightToLeft,
                 ),
               );
@@ -132,17 +132,14 @@ class _HomePageState extends State<HomePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          SizedBox(
+                          Expanded(
                             child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0,
-                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 16.0),
                               width: 240.w,
                               decoration: BoxDecoration(
-                                color:Theme.of(context).colorScheme.inversePrimary,
+                                color: Theme.of(context).colorScheme.inversePrimary,
                                 borderRadius: BorderRadius.circular(20),
                               ),
-
                               //Search
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -150,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Icon(
                                     Icons.search,
-                                    color: Theme.of(context).textSelectionTheme.cursorColor
+                                    color: Theme.of(context).textSelectionTheme.cursorColor,
                                   ),
                                   SizedBox(
                                     width: 5.h,
@@ -159,8 +156,7 @@ class _HomePageState extends State<HomePage> {
                                     child: TextField(
                                       showCursor: false,
                                       decoration: InputDecoration(
-                                        hintText:
-                                            AppLocalizations.of(context)!.search,
+                                        hintText: AppLocalizations.of(context)!.search,
                                         border: InputBorder.none,
                                         focusedBorder: InputBorder.none,
                                       ),
@@ -171,12 +167,11 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           const Dialogfilter(),
-
                           IconButton(
                             onPressed: () {
                               SecondDialog.showSecondDialog(context);
                             },
-                            icon:  Icon(
+                            icon: Icon(
                               Icons.filter_alt_outlined,
                               color: Colors.white,
                               size: 30.sp,
@@ -184,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
@@ -221,30 +216,32 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-      Padding(
-        padding: const EdgeInsets.only(left: 5,right: 5),
-        child: GridView.builder(
-          shrinkWrap: true,
-          primary: false,
-          itemCount: _storyList.length,
-          gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisExtent: 190.sp,
-            crossAxisSpacing: 5.sp,
-            mainAxisSpacing: 5.sp,
-          ),
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                StoryWidget(index: index, storyList: _storyList),
-              ],
-            );
-          },
-        ),
-      ),
-      ],
+
+            Padding(
+              padding: const EdgeInsets.only(left: 5, right: 5,),
+              child: GridView.builder(
+                shrinkWrap: true,
+                primary: false,
+                itemCount: storyList.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisExtent: 160.h,
+                  crossAxisSpacing: 5.w,
+                  mainAxisSpacing: 5.h,
+                ),
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      StoryWidget(index: index, storyList: storyList),
+                    ],
+                  );
+                },
+              ),
+            )
+          ],
         ),
       ),
     );
   }
 }
+

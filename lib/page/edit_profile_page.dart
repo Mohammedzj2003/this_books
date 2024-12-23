@@ -19,7 +19,7 @@ class EditProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit $title'),
-        backgroundColor: Color(0xff283E50),
+        backgroundColor: const Color(0xff283E50),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

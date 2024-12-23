@@ -27,7 +27,7 @@ class _FavoritePageState extends State<FavoritePage> {
               height: 100,
               child: Icon(Icons.favorite),
             ),
-            const SizedBox(
+             SizedBox(
               height: 10,
             ),
             Text(

@@ -8,7 +8,6 @@ import 'package:this_books/page/login_page.dart';
 import 'package:this_books/page/welcome_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-final navigatorKey = GlobalKey<NavigatorState>();
 
 
 class AuthPage {

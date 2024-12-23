@@ -2,7 +2,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:this_books/models/auth_model.dart';
 import 'package:this_books/page/Forget%20Password/forgetPass_Page.dart';
 import 'package:this_books/page/register_page.dart';
@@ -29,9 +28,6 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     AuthController authController = Get.put(AuthController());
@@ -43,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.all(33.0),
             child: Column(
               children: [
-                 SizedBox(
+                SizedBox(
                   height: 100.h,
                 ),
                 Row(
@@ -51,19 +47,19 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       AppLocalizations.of(context)!.welcomeBack,
                       textDirection: TextDirection.ltr,
-                      style:  TextStyle(
+                      style: TextStyle(
                         color: Theme.of(context).textSelectionTheme.selectionColor,
                         fontSize: 25.sp,
                         fontWeight: FontWeight.bold,
                       ),
                       overflow: TextOverflow.fade,
                     ),
-                     SizedBox(
+                    SizedBox(
                       width: 20.w,
                     ),
                   ],
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 33.h,
                 ),
                 TextFormField(
@@ -75,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: const Icon(Icons.email),
                   ),
                 ),
-                 SizedBox(height: 33.h),
+                SizedBox(height: 33.h),
                 TextFormField(
                   controller: _passwordController,
                   keyboardType: TextInputType.text,
@@ -95,31 +91,33 @@ class _LoginPageState extends State<LoginPage> {
                 Align(
                   alignment: Alignment.topRight,
                   child: TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const ForgetPassPage(),
-                            ));
-                      },
-                      child: Text(
-                        AppLocalizations.of(context)!.forgetPassword,
-                        style:  TextStyle(
-                          color: Colors.blue,
-                          fontSize: 18.sp,
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ForgetPassPage(),
                         ),
-                      )),
+                      );
+                    },
+                    child: Text(
+                      AppLocalizations.of(context)!.forgetPassword,
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 18.sp,
+                      ),
+                    ),
+                  ),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 33.h,
                 ),
-                //ButtonSign In
+                // ButtonSign In
                 SizedBox(
                   width: double.infinity,
                   child: GestureDetector(
                     child: ElevatedButton(
-                      onPressed: (){
-                        _authPage.signIn( context,_emailController, _passwordController);
+                      onPressed: () {
+                        _authPage.signIn(context, _emailController, _passwordController);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff283E50),
@@ -133,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       child: Text(
                         AppLocalizations.of(context)!.next,
-                        style:  TextStyle(
+                        style: TextStyle(
                           color: Colors.white,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.bold,
@@ -142,16 +140,16 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 15.h,
                 ),
                 SizedBox(
                   width: double.infinity,
                   child: GestureDetector(
                     child: ElevatedButton(
-                      onPressed: (){
+                      onPressed: () {
                         authController.loginWithEmail();
-                        },
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff1649e4),
                         shadowColor: Colors.black,
@@ -165,14 +163,13 @@ class _LoginPageState extends State<LoginPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset('icons/google.png',width: 25.w,height: 25.h,),
-
+                          Image.asset('icons/google.png', width: 25.w, height: 25.h),
                           SizedBox(
                             width: 15.w,
                           ),
                           Text(
                             AppLocalizations.of(context)!.gmail,
-                            style:  TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
                               fontSize: 14.sp,
                             ),
@@ -182,11 +179,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 33.h,
                 ),
                 Text.rich(
-                  style:  TextStyle(
+                  style: TextStyle(
                     fontSize: 15.sp,
                   ),
                   TextSpan(
@@ -196,41 +193,38 @@ class _LoginPageState extends State<LoginPage> {
                         style: TextStyle(
                           fontSize: 15.sp,
                           color: Theme.of(context).textSelectionTheme.cursorColor,
-                        )
+                        ),
                       ),
                       const TextSpan(text: ' '),
                       TextSpan(
-                          text: AppLocalizations.of(context)!.signUp,
-                          style: const TextStyle(
-                              color: Colors.blue, fontWeight: FontWeight.bold),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const RegisterPage()));
-                            })
+                        text: AppLocalizations.of(context)!.signUp,
+                        style: const TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const RegisterPage(),
+                              ),
+                            );
+                          },
+                      ),
                     ],
                   ),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const WelcomePage()));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const WelcomePage(),
+                      ),
+                    );
                   },
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const WelcomePage()));
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.guest,
-                      style:  TextStyle(color: Colors.blue, fontSize: 15.sp),
-                    ),
+                  child: Text(
+                    AppLocalizations.of(context)!.guest,
+                    style: TextStyle(color: Colors.blue, fontSize: 15.sp),
                   ),
                 ),
               ],
@@ -241,5 +235,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-
